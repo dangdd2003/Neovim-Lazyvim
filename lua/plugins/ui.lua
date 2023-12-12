@@ -25,11 +25,37 @@ return {
     opts = function(_, opts)
       table.insert(opts.routes, {
         filter = {
-          event = "notify",
-          find = "No information available",
+          event = { "notify", "lsp" },
+          kind = "progress",
+          any = {
+            { find = "No information available" },
+            { find = "jdtls" },
+          },
         },
         opts = { skip = true },
       })
+    end,
+  },
+
+  -- dashboard
+  {
+    "nvimdev/dashboard-nvim",
+    event = "VimEnter",
+    opts = function(_, opts)
+      local logo = [[
+
+        ██████╗       ██████╗ ███████╗██╗   ██╗
+        ██╔══██╗      ██╔══██╗██╔════╝██║   ██║
+        ██║  ██║█████╗██║  ██║█████╗  ██║   ██║
+        ██║  ██║╚════╝██║  ██║██╔══╝  ╚██╗ ██╔╝
+        ██████╔╝      ██████╔╝███████╗ ╚████╔╝ 
+        ╚═════╝       ╚═════╝ ╚══════╝  ╚═══╝  
+                                              
+
+      ]]
+
+      logo = string.rep("\n", 8) .. logo .. "\n\n"
+      opts.config.header = vim.split(logo, "\n")
     end,
   },
 }
