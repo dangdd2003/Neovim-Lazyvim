@@ -67,3 +67,7 @@ rd -r $env:LOCALAPPDATA\nvim
 # optional but recommended
 rd -r $env:LOCALAPPDATA\nvim-data
 ```
+
+## Custom configuration
+
+- Visit main page of [LazyVim](https://www.lazyvim.org)
