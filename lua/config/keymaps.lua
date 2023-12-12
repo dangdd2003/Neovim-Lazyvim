@@ -7,8 +7,8 @@ local keymap = vim.keymap
 keymap.set("n", "<C-c>", "<cmd> %y+ <CR>", { desc = "Copy whole file" })
 
 -- Go to beginning and end in normal mode
-keymap.set("n", "<C-b>", "<Home>", { desc = "Beginning of line" })
-keymap.set("n", "<C-e>", "<End>", { desc = "End of line" })
+keymap.set({ "n", "v" }, "<C-b>", "^", { desc = "Beginning of line" })
+keymap.set({ "n", "v" }, "<C-e>", "$", { desc = "End of line" })
 
 -- Go to beginning and end in insert mode
 keymap.set("i", "<C-b>", "<ESC>^i", { desc = "Beginning of line" })
@@ -22,3 +22,6 @@ keymap.set("i", "<C-k>", "<Up>", { desc = "Move up" })
 
 -- Toggle neotree
 keymap.set("n", "<C-n>", "<leader>fE", { desc = "Explorer NeoTree (cwd)", remap = true })
+
+-- Toggle tagbar
+keymap.set("n", "<leader>ub", "<cmd>TagbarToggle<CR>", { desc = "Toggle Tagbar" })
