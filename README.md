@@ -2,7 +2,7 @@
 
 ## Installation
 
-### Make a backup of current Neovim files:
+### Make a backup of current Neovim files
 
 - Linux/MacOS
 
@@ -37,7 +37,7 @@ git clone https://github.com/dangdd2003/Neovim-Lazyvim.git ~/.config/nvim
 - Windows
 
 ```shell
-git clone https://github.com/dangdd2003/Neovim-Lazyvim.github $env:LOCALAPPDATA\nvim
+git clone https://github.com/dangdd2003/Neovim-Lazyvim.git $env:LOCALAPPDATA\nvim
 ```
 
 ### Start nvim
