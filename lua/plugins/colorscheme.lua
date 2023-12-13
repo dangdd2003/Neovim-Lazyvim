@@ -2,19 +2,17 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "catppuccin",
+      colorscheme = "tokyonight",
     },
   },
 
   {
     "folke/tokyonight.nvim",
-    opts = {
-      transparent = true,
-      styles = {
-        sidebars = "transparent",
-        floats = "transparent",
-      },
-    },
+    config = function()
+      require("tokyonight").load({
+        style = "night",
+      })
+    end,
   },
 
   {
