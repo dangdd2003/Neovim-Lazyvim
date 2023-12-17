@@ -8,11 +8,14 @@ return {
 
   {
     "folke/tokyonight.nvim",
-    config = function()
-      require("tokyonight").load({
-        style = "night",
-      })
-    end,
+    opts = {
+      transparent = true,
+      style = "night",
+      styles = {
+        sidebars = "transparent",
+        floats = "transparent",
+      },
+    },
   },
 
   {
