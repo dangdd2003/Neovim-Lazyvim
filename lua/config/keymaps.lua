@@ -23,8 +23,5 @@ keymap.set("i", "<C-k>", "<Up>", { desc = "Move up" })
 -- Toggle neotree
 keymap.set("n", "<C-n>", "<leader>fE", { desc = "Explorer NeoTree (cwd)", remap = true })
 
--- Toggle tagbar
-keymap.set("n", "<leader>ub", "<cmd>TagbarToggle<CR>", { desc = "Toggle Tagbar" })
-
 vim.keymap.del("n", "<S-h>")
 vim.keymap.del("n", "<S-l>")
