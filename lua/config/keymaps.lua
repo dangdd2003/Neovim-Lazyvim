@@ -4,7 +4,8 @@
 local keymap = vim.keymap
 
 -- Copy all
-keymap.set("n", "<C-c>", "<cmd> %y+ <CR>", { desc = "Copy whole file" })
+-- keymap.set("n", "<C-c>", "<cmd> %y+ <CR>", { desc = "Copy whole file" })
+keymap.set({ "n", "v", "i" }, "<C-c>", "<ESC>", { desc = "Escape" })
 
 -- Go to beginning and end in normal mode
 keymap.set({ "n", "v" }, "<C-b>", "^", { desc = "Beginning of line" })
@@ -22,9 +23,6 @@ keymap.set("i", "<C-k>", "<Up>", { desc = "Move up" })
 
 -- Toggle neotree
 keymap.set("n", "<C-n>", "<leader>fE", { desc = "Explorer NeoTree (cwd)", remap = true })
-
--- Toggle tagbar
-keymap.set("n", "<leader>ub", "<cmd>TagbarToggle<CR>", { desc = "Toggle Tagbar" })
 
 vim.keymap.del("n", "<S-h>")
 vim.keymap.del("n", "<S-l>")
