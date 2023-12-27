@@ -1,6 +1,6 @@
 return {
 
-  --nvim-lspconfig
+  -- nvim-lspconfig
   {
     "neovim/nvim-lspconfig",
     init = function()
@@ -23,6 +23,7 @@ return {
     },
   },
 
+  -- jdtls
   {
     "mfussenegger/nvim-jdtls",
     ---@type lspconfig.options.jdtls

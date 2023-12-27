@@ -11,6 +11,11 @@ return {
     config = function()
       require("tokyonight").load({
         style = "night",
+        transparent = true,
+        styles = {
+          sidebars = "transparent",
+          floats = "transparent",
+        },
       })
     end,
   },
