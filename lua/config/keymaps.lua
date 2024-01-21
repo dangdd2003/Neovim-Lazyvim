@@ -4,7 +4,7 @@
 local keymap = vim.keymap
 
 -- Copy all
-keymap.set("n", "<C-c>", "<cmd> %y+ <CR>", { desc = "Copy whole file" })
+-- keymap.set("n", "<C-c>", "<cmd> %y+ <CR>", { desc = "Copy whole file" })
 
 -- Go to beginning and end in normal mode
 keymap.set({ "n", "v" }, "<C-b>", "^", { desc = "Beginning of line" })
@@ -23,5 +23,15 @@ keymap.set("i", "<C-k>", "<Up>", { desc = "Move up" })
 -- Toggle neotree
 keymap.set("n", "<C-n>", "<leader>fE", { desc = "Explorer NeoTree (cwd)", remap = true })
 
+-- Vimtex keymaps
+keymap.set("n", "<Leader>vc", "<Cmd>VimtexCompile<CR>", { desc = "Vimtex Compile" })
+keymap.set("n", "<Leader>vx", "<Cmd>VimtexClean<CR>", { desc = "Vimtex Clean" })
+
+-- Add additional undo breack-points
+keymap.set("i", "?", "?<c-g>u")
+keymap.set("i", "/", "/<c-g>u")
+keymap.set("i", ":", ":<c-g>u")
+
+-- Delete unused keymap
 vim.keymap.del("n", "<S-h>")
 vim.keymap.del("n", "<S-l>")

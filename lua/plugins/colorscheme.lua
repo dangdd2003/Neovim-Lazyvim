@@ -10,12 +10,12 @@ return {
     "folke/tokyonight.nvim",
     config = function()
       require("tokyonight").load({
-        style = "night",
-        transparent = true,
-        styles = {
-          sidebars = "transparent",
-          floats = "transparent",
-        },
+        style = "moon",
+        -- transparent = true,
+        -- styles = {
+        --   sidebars = "transparent",
+        --   floats = "transparent",
+        -- },
       })
     end,
   },
@@ -26,6 +26,7 @@ return {
     config = function()
       require("catppuccin").setup({
         flavour = "macchiato",
+        -- transparent_background = true,
       })
     end,
   },

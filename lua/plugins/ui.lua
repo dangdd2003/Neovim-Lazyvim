@@ -17,6 +17,13 @@ return {
       { "<Tab>", "<Cmd>BufferLineCycleNext<CR>", desc = "Next Tab" },
       { "<S-Tab>", "<Cmd>BufferLineCyclePrev<CR>", desc = "Prev Tab" },
     },
+    opts = {
+      options = {
+        indicator = {
+          style = "underline",
+        },
+      },
+    },
   },
 
   -- noice
@@ -58,5 +65,17 @@ return {
       logo = string.rep("\n", 8) .. logo .. "\n\n"
       opts.config.header = vim.split(logo, "\n")
     end,
+  },
+
+  -- which-key
+  {
+    "folke/which-key.nvim",
+    opts = {
+      require("which-key").register({
+        v = {
+          name = "vimtex",
+        },
+      }, { prefix = "<leader>" }),
+    },
   },
 }
