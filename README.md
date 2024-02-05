@@ -40,6 +40,20 @@ git clone https://github.com/dangdd2003/Neovim-Lazyvim.git ~/.config/nvim
 git clone https://github.com/dangdd2003/Neovim-Lazyvim.git $env:LOCALAPPDATA\nvim
 ```
 
+### Remove `.git` folder for adding to custom repository
+
+- Linux/Macos
+
+```shell
+rm -rf ~/.config/nvim/.git
+```
+
+- Windows
+
+```shell
+Remove-Item $env:LOCALAPPDATA\nvim\.git -Recurse -Force
+```
+
 ### Start nvim
 
 ```shell
