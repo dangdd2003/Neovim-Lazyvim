@@ -56,14 +56,43 @@ return {
       local logo = [[
         ██████╗       ██████╗ ███████╗██╗   ██╗
         ██╔══██╗      ██╔══██╗██╔════╝██║   ██║
-        ██║  ██║█████╗██║  ██║█████╗  ██║   ██║
-        ██║  ██║╚════╝██║  ██║██╔══╝  ╚██╗ ██╔╝
+       ████╗ ██║█████╗██║  ██║█████╗  ██║   ██║
+       ╚██╔╝ ██║╚════╝██║  ██║██╔══╝  ╚██╗ ██╔╝
         ██████╔╝      ██████╔╝███████╗ ╚████╔╝ 
         ╚═════╝       ╚═════╝ ╚══════╝  ╚═══╝  
       ]]
 
       logo = string.rep("\n", 8) .. logo .. "\n\n"
+
+      local file_browser = function()
+        local telescope = require("telescope")
+        local function telescope_buffer_dir()
+          return vim.fn.expand("%:p:h")
+        end
+
+        telescope.extensions.file_browser.file_browser({
+          path = "%:p:h",
+          cwd = telescope_buffer_dir(),
+          respect_gitignroe = false,
+          hidden = true,
+          grouped = true,
+          previewer = false,
+          initial_mode = "normal",
+          layout_config = { height = 40 },
+        })
+      end
+
       opts.config.header = vim.split(logo, "\n")
+      table.insert(opts.config.center, 2, {
+        action = file_browser,
+        desc = "  File Browser",
+        icon = "󰥨",
+        key = "b",
+      })
+      for _, button in ipairs(opts.config.center) do
+        button.desc = button.desc .. string.rep(" ", 43 - #button.desc)
+        button.key_format = "  %s"
+      end
     end,
   },
 
@@ -76,6 +105,20 @@ return {
           name = "vimtex",
         },
       }, { prefix = "<leader>" }),
+    },
+  },
+
+  -- lualine
+  {
+    "nvim-lualine/lualine.nvim",
+    event = "VeryLazy",
+    opts = {
+      options = {
+        -- section_separators = { left = "", right = "" },
+        -- component_separators = { left = "", right = "" },
+        component_separators = { left = "", right = "" },
+        section_separators = { left = "", right = "" },
+      },
     },
   },
 }

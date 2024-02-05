@@ -10,12 +10,12 @@ return {
     "folke/tokyonight.nvim",
     config = function()
       require("tokyonight").load({
-        style = "moon",
-        -- transparent = true,
-        -- styles = {
-        --   sidebars = "transparent",
-        --   floats = "transparent",
-        -- },
+        style = "storm",
+        transparent = true,
+        styles = {
+          sidebars = "transparent",
+          floats = "transparent",
+        },
       })
     end,
   },
