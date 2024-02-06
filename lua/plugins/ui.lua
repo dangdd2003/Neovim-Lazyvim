@@ -78,7 +78,7 @@ return {
           grouped = true,
           previewer = false,
           initial_mode = "normal",
-          layout_config = { height = 40 },
+          layout_config = { height = 0.9 },
         })
       end
 
@@ -118,6 +118,17 @@ return {
         -- component_separators = { left = "", right = "" },
         component_separators = { left = "", right = "" },
         section_separators = { left = "", right = "" },
+      },
+    },
+  },
+
+  -- mason
+  {
+    "williamboman/mason.nvim",
+    opts = {
+      ui = {
+        border = "rounded",
+        height = 0.8,
       },
     },
   },

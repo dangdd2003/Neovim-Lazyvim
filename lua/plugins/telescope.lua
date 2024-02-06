@@ -4,27 +4,13 @@ return {
     dependencies = {
       "nvim-telescope/telescope-file-browser.nvim",
 
-      -- cmake
+      -- cmake - windows
       -- {
       --   "nvim-telescope/telescope-fzf-native.nvim",
       --   build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
       -- },
-
-      -- make
-      {
-        "nvim-telescope/telescope-fzf-native.nvim",
-        build = "make",
-      },
     },
     keys = {
-      {
-        "<leader>fg",
-        function()
-          local builtin = require("telescope.builtin")
-          builtin.live_grep()
-        end,
-        desc = "Grep (root dir)",
-      },
       {
         "<leader>fB",
         function()
@@ -32,6 +18,13 @@ return {
           builtin.buffers()
         end,
         desc = "Buffers",
+      },
+      {
+        "<leader>fp",
+        function()
+          require("telescope.builtin").find_files({ cwd = require("lazy.core.config").options.root })
+        end,
+        desc = "Find Plugin File",
       },
       {
         "<leader>fb",
@@ -49,7 +42,7 @@ return {
             grouped = true,
             previewer = false,
             initial_mode = "normal",
-            layout_config = { height = 40 },
+            layout_config = { height = 0.9 },
           })
         end,
         desc = "File Browser (cwd)",
@@ -67,6 +60,7 @@ return {
           mappings = {
             ["n"] = {
               ["h"] = fb_actions.goto_parent_dir,
+              ["<bs>"] = fb_actions.goto_parent_dir,
               ["<C-u>"] = function(prompt_bufnr)
                 for i = 1, 10 do
                   actions.move_selection_previous(prompt_bufnr)
