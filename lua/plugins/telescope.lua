@@ -29,21 +29,8 @@ return {
       {
         "<leader>fb",
         function()
-          local telescope = require("telescope")
-          local function telescope_buffer_dir()
-            return vim.fn.expand("%:p:h")
-          end
-
-          telescope.extensions.file_browser.file_browser({
-            path = "%:p:h",
-            cwd = telescope_buffer_dir(),
-            respect_gitignroe = false,
-            hidden = true,
-            grouped = true,
-            previewer = false,
-            initial_mode = "normal",
-            layout_config = { height = 0.9 },
-          })
+          local fb_actions = require("telescope").extensions.file_browser
+          fb_actions.file_browser()
         end,
         desc = "File Browser (cwd)",
       },
@@ -52,9 +39,20 @@ return {
       local telescope = require("telescope")
       local actions = require("telescope.actions")
       local fb_actions = require("telescope").extensions.file_browser.actions
+      local function telescope_buffer_dir()
+        return vim.fn.expand("%:p:h")
+      end
 
       opts.extensions = {
         file_browser = {
+          path = "%:p:h",
+          cwd = telescope_buffer_dir(),
+          respect_gitignroe = false,
+          hidden = true,
+          grouped = true,
+          previewer = false,
+          initial_mode = "normal",
+          layout_config = { height = 0.9 },
           theme = "dropdown",
           hijack_netrw = true,
           mappings = {
