@@ -1,15 +1,5 @@
 return {
 
-  -- noice
-  {
-    "folke/noice.nvim",
-    opts = {
-      presets = {
-        lsp_doc_border = true,
-      },
-    },
-  },
-
   -- bufferline
   {
     "akinsho/bufferline.nvim",
@@ -19,9 +9,9 @@ return {
     },
     opts = {
       options = {
-        indicator = {
-          style = "underline",
-        },
+        mode = "tabs",
+        show_buffer_close_icons = false,
+        show_close_icon = false,
       },
     },
   },
@@ -45,6 +35,7 @@ return {
         },
         opts = { skip = true },
       })
+      opts.presets.lsp_doc_border = true
     end,
   },
 
@@ -95,7 +86,7 @@ return {
     },
   },
 
-  -- lualine
+  -- lualine - statusline
   {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
@@ -118,5 +109,62 @@ return {
         height = 0.8,
       },
     },
+  },
+
+  -- incline - filename
+  {
+    "b0o/incline.nvim",
+    event = "BufReadPre",
+    config = function()
+      require("incline").setup({
+        highlight = {
+          groups = {
+            InclineNormal = { guibg = "#C71585", guifg = "#F2F3F4" },
+            InclineNormalNC = { guibg = "#C0C0C0", guifg = "#8B008B" },
+          },
+        },
+        window = {
+          margin = { vertical = 0, horizontal = 0 },
+        },
+        hide = {
+          cursorline = true,
+        },
+      })
+      require("incline").setup({
+        render = function(props)
+          local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
+          local ft_icon, ft_color = require("nvim-web-devicons").get_icon_color(filename)
+          local modified = vim.bo[props.buf].modified and "bold,italic" or "bold"
+
+          if vim.bo[props.buf].modified then
+            filename = filename .. ""
+          end
+
+          local function get_diagnostic_label()
+            local icons = require("lazyvim.config").icons.diagnostics
+            local label = {}
+
+            for severity, icon in pairs(icons) do
+              local n = #vim.diagnostic.get(props.buf, { severity = vim.diagnostic.severity[string.upper(severity)] })
+              if n > 0 then
+                table.insert(label, { icon .. n .. " ", group = "DiagnosticSign" .. severity })
+              end
+            end
+            if #label > 0 then
+              table.insert(label, { "┊ " })
+            end
+            return label
+          end
+
+          local buffer = {
+            { get_diagnostic_label() },
+            { (ft_icon or "") .. " ", guifg = ft_color, guibg = "none" },
+            { filename .. " ", gui = modified },
+            { "┊  " .. vim.api.nvim_win_get_number(props.win), group = "DevIconWindows" },
+          }
+          return buffer
+        end,
+      })
+    end,
   },
 }
