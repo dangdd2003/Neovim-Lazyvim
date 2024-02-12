@@ -1,11 +1,16 @@
 -- Keymaps are automatically loaded on the VeryLazy event
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Ad any additional keymaps here
+require("config.discipline").cowboy() -- force to use counter
+
 local keymap = vim.keymap
 local Util = require("lazyvim.util")
 
 -- Copy all
--- keymap.set("n", "<C-c>", "<cmd> %y+ <CR>", { desc = "Copy whole file" })
+keymap.set("n", "<C-c>", "<cmd> %y+ <CR>", { desc = "Copy all" })
+
+-- Select all
+keymap.set("n", "<C-a>", "gg<S-v>G", { desc = "Select all" })
 
 -- Go to beginning and end in normal mode
 keymap.set({ "n", "v" }, "<C-b>", "^", { desc = "Beginning of line" })
