@@ -2,32 +2,37 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "tokyonight",
+      -- colorscheme = "tokyonight",
+      colorscheme = "catppuccin",
     },
   },
 
   {
     "folke/tokyonight.nvim",
-    config = function()
-      require("tokyonight").load({
-        style = "storm",
-        transparent = true,
-        styles = {
-          sidebars = "transparent",
-          floats = "transparent",
-        },
-      })
-    end,
+    opts = {
+      style = "storm",
+      transparent = true,
+      styles = {
+        sidebars = "transparent",
+        floats = "transparent",
+      },
+    },
   },
 
   {
     "catppuccin/nvim",
+    lazy = true,
     name = "catppuccin",
-    config = function()
-      require("catppuccin").setup({
-        flavour = "macchiato",
-        -- transparent_background = true,
-      })
-    end,
+    opts = {
+      flavour = "macchiato",
+      transparent_background = true,
+    },
+  },
+
+  {
+    "rcarriga/nvim-notify",
+    opts = {
+      background_colour = "#000000",
+    },
   },
 }

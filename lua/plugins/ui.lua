@@ -77,13 +77,11 @@ return {
   -- which-key
   {
     "folke/which-key.nvim",
-    opts = {
-      require("which-key").register({
-        v = {
-          name = "vimtex",
-        },
-      }, { prefix = "<leader>" }),
-    },
+    opts = function(_, opts)
+      if require("lazyvim.util").has("noice.nvim") then
+        opts.defaults["<leader>v"] = { name = "+vimtex" }
+      end
+    end,
   },
 
   -- lualine - statusline
