@@ -3,6 +3,7 @@ return {
   -- nvim-lspconfig
   {
     "neovim/nvim-lspconfig",
+    -- eslint
     init = function()
       local keys = require("lazyvim.plugins.lsp.keymaps").get()
       keys[#keys + 1] = { "<c-k>", mode = "i", false }
@@ -35,6 +36,45 @@ return {
         table.insert(opts.cmd, "--jvm-arg=" .. jvmArg)
         return opts
       end,
+    },
+  },
+
+  -- cmake
+  {
+    "neovim/nvim-lspconfig",
+    opts = {
+      servers = {
+        neocmake = {},
+      },
+    },
+  },
+
+  {
+    "nvimtools/none-ls.nvim",
+    optional = true,
+    opts = function(_, opts)
+      local nls = require("null-ls")
+      opts.sources = vim.list_extend(opts.sources or {}, {
+        nls.builtins.diagnostics.cmake_lint,
+      })
+    end,
+  },
+
+  {
+    "mason.nvim",
+    opts = function(_, opts)
+      opts.ensure_installed = opts.ensure_installed or {}
+      vim.list_extend(opts.ensure_installed, { "cmakelang", "cmakelint" })
+    end,
+  },
+
+  {
+    "mfussenegger/nvim-lint",
+    optional = true,
+    opts = {
+      linters_by_ft = {
+        cmake = { "cmakelint" },
+      },
     },
   },
 }
