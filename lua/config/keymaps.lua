@@ -12,11 +12,11 @@ keymap.set("n", "<C-c>", "<cmd> %y+ <CR>", { desc = "Copy all" })
 -- Select all
 keymap.set("n", "<C-a>", "gg<S-v>G", { desc = "Select all" })
 
--- Go to beginning and end in normal mode
+-- Go to beginning and ending in normal mode
 keymap.set({ "n", "v" }, "<C-b>", "^", { desc = "Beginning of line" })
 keymap.set({ "n", "v" }, "<C-e>", "$", { desc = "End of line" })
 
--- Go to beginning and end in insert mode
+-- Go to beginning and ending in insert mode
 keymap.set("i", "<C-b>", "<ESC>^i", { desc = "Beginning of line" })
 keymap.set("i", "<C-e>", "<End>", { desc = "End of line" })
 
