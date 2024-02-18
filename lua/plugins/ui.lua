@@ -118,7 +118,7 @@ return {
         highlight = {
           groups = {
             InclineNormal = { guibg = "#C71585", guifg = "#F2F3F4" },
-            InclineNormalNC = { guibg = "#C0C0C0", guifg = "#8B008B" },
+            InclineNormalNC = { guibg = "#C0C0C0", guifg = "#8000FF" },
           },
         },
         window = {
