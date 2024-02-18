@@ -16,6 +16,11 @@ return {
         sidebars = "transparent",
         floats = "transparent",
       },
+      -- custom line number color
+      on_highlights = function(highlights, colors)
+        highlights.LineNr = { fg = colors.yellow }
+        highlights.CursorLineNr = { fg = colors.green }
+      end,
     },
   },
 
@@ -26,6 +31,13 @@ return {
     opts = {
       flavour = "macchiato",
       transparent_background = true,
+      -- custom line number color
+      custom_highlights = function(colors)
+        return {
+          CursorLineNr = { fg = colors.rosewater },
+          LineNr = { fg = colors.mauve },
+        }
+      end,
     },
   },
 
