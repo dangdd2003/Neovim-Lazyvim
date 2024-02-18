@@ -42,15 +42,17 @@ keymap.set("i", ":", ":<c-g>u")
 keymap.set("n", "<Leader>gb", "<Cmd>Gitsigns toggle_current_line_blame<CR>", { desc = "Toggle Git Line Blame" })
 
 -- Terminal (change default shell to pwsh in Windows)
-local terminal = function()
-  Util.terminal("pwsh", { cwd = Util.root() })
+if vim.loop.os_uname().sysname == "Windows_NT" then
+  local terminal = function()
+    Util.terminal("pwsh", { cwd = Util.root() })
+  end
+  keymap.set("n", "<leader>ft", terminal, { desc = "Terminal (root dir)" })
+  keymap.set("n", "<leader>fT", function()
+    Util.terminal("pwsh")
+  end, { desc = "Terminal (cwd)" })
+  keymap.set("n", "<c-/>", terminal, { desc = "Terminal (root dir)" })
+  keymap.set("n", "<c-_>", terminal, { desc = "which_key_ignore" })
 end
-keymap.set("n", "<leader>ft", terminal, { desc = "Terminal (root dir)" })
-keymap.set("n", "<leader>fT", function()
-  Util.terminal("pwsh")
-end, { desc = "Terminal (cwd)" })
-keymap.set("n", "<c-/>", terminal, { desc = "Terminal (root dir)" })
-keymap.set("n", "<c-_>", terminal, { desc = "which_key_ignore" })
 
 -- Delete unused keymap
 vim.keymap.del("n", "<S-h>")
