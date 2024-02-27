@@ -6,6 +6,7 @@ return {
       colorscheme = "catppuccin",
       -- colorscheme = "gruvbox",
       -- colorscheme = "solarized-osaka",
+      -- colorscheme = "kanagawa",
     },
   },
 
@@ -70,9 +71,34 @@ return {
   },
 
   {
-    "rcarriga/nvim-notify",
+    "rebelot/kanagawa.nvim",
+    enabled = false,
     opts = {
-      background_colour = "#000000",
+      transparent = true,
+      theme = "dragon",
+      background = {
+        dark = "dragon",
+        light = "lotus",
+      },
+      colors = {
+        theme = {
+          all = {
+            ui = {
+              bg_gutter = "none",
+            },
+          },
+        },
+      },
+      overrides = function(colors)
+        local theme = colors.theme
+        return {
+          NormalFloat = { bg = "none" },
+          FloatBorder = { bg = "none" },
+          FloatTitle = { bg = "none" },
+          NormalDark = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m3 },
+          TelescopeBorder = { bg = "none" },
+        }
+      end,
     },
   },
 }

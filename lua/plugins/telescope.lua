@@ -32,7 +32,7 @@ return {
           local fb_actions = require("telescope").extensions.file_browser
           fb_actions.file_browser()
         end,
-        desc = "File Browser (cwd)",
+        desc = "File Browser (current buffer)",
       },
     },
     config = function(_, opts)

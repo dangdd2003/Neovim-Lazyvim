@@ -40,7 +40,7 @@ return {
     end,
   },
 
-  -- dashboard
+  -- dashboard - startup UI
   {
     "nvimdev/dashboard-nvim",
     event = "VimEnter",
@@ -105,7 +105,7 @@ return {
     opts = {
       ui = {
         border = "rounded",
-        height = 0.8,
+        height = 0.75,
       },
     },
   },
@@ -165,5 +165,21 @@ return {
         end,
       })
     end,
+  },
+
+  -- colorizer - highlight corlor
+  {
+    "NvChad/nvim-colorizer.lua",
+    opts = {
+      user_default_options = {
+        RRGGBBAA = true,
+        AARRGGBB = true,
+        rgb_fn = true,
+        hsl_fn = true,
+        css = true,
+        css_fn = true,
+        tailwind = true,
+      },
+    },
   },
 }
