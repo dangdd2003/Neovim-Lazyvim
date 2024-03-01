@@ -57,6 +57,29 @@ return {
           hijack_netrw = true,
           mappings = {
             ["n"] = {
+              -- override default function for open in built-in application
+              ["o"] = function(prompt_bufnr)
+                local action_state = require("telescope.actions.state")
+                local fb_utils = require("telescope._extensions.file_browser.utils")
+                local quiet = action_state.get_current_picker(prompt_bufnr).finder.quiet
+                local selections = fb_utils.get_selected_files(prompt_bufnr, true)
+                if vim.tbl_isempty(selections) then
+                  fb_utils.notify("actions.open", { msg = "No selection to be opened!", level = "INFO", quiet = quiet })
+                  return
+                end
+                local cmd = vim.fn.has("win32") == 1 and "explorer.exe"
+                  or vim.fn.has("mac") == 1 and "open"
+                  or "xdg-open"
+                for _, path in ipairs(selections) do
+                  require("plenary.job")
+                    :new({
+                      command = cmd,
+                      args = { path:absolute() },
+                    })
+                    :start()
+                end
+                actions.close(prompt_bufnr)
+              end,
               ["h"] = fb_actions.goto_parent_dir,
               ["<bs>"] = fb_actions.goto_parent_dir,
               ["<C-u>"] = function(prompt_bufnr)

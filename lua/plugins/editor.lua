@@ -24,12 +24,19 @@ return {
               title = "Open in application",
               timeout = 5000,
             })
-            if vim.loop.os_uname().sysname == "Windows_NT" then
-              --  Windows: open file in default application
-              os.execute("explorer.exe " .. path)
+            local cmd = vim.fn.has("win32") == 1 and "explorer.exe" or vim.fn.has("mac") == 1 and "open" or "xdg-open"
+            -- Open file/dir in default built-in application
+            -- vim.fn.jobstart({ cmd, path }, { detach = true })
+            if vim.fn.has("win32") then
+              --  Windows
+              os.execute("start " .. path)
+              vim.fn.jobstart({ cmd, path })
+            elseif vim.fn.has("mac") then
+              -- Macos
+              vim.fn.jobstart({ cmd, path }, { detach = true })
             else
-              -- Macos/Linux: open file in default application
-              vim.fn.jobstart({ "xdg-open", path }, { detach = true })
+              -- Linux
+              vim.fn.jobstart({ cmd, path }, { detach = true })
             end
           end,
         },
