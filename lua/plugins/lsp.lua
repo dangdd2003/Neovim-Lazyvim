@@ -27,6 +27,7 @@ return {
   -- jdtls
   {
     "mfussenegger/nvim-jdtls",
+    enabled = false,
     ---@type lspconfig.options.jdtls
     ---@diagnostic disable-next-line: missing-fields
     opts = {
