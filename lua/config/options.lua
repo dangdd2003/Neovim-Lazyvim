@@ -3,7 +3,7 @@
 -- Add any additional options here
 
 -- deafaut terminal for windows
-if vim.loop.os_uname().sysname == "Windows_NT" then
+if vim.fn.has("win32") then
   vim.opt.shell = "pwsh"
 end
 
