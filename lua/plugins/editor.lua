@@ -27,11 +27,11 @@ return {
             -- local cmd = vim.fn.has("win32") == 1 and "explorer.exe" or vim.fn.has("mac") == 1 and "open" or "xdg-open"
             -- Open file/dir in default built-in application
             -- vim.fn.jobstart({ cmd, path }, { detach = true })
-            if vim.fn.has("win32") then
+            if vim.fn.has("win32") == 1 then
               --  Windows
               os.execute("start " .. path)
-              vim.fn.jobstart({ cmd, path })
-            elseif vim.fn.has("mac") then
+              -- vim.fn.jobstart({ cmd, path })
+            elseif vim.fn.has("mac") == 1 then
               -- Macos
               vim.fn.jobstart({ "open", path }, { detach = true })
             else
