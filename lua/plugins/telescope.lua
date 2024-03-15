@@ -39,9 +39,28 @@ return {
       local telescope = require("telescope")
       local actions = require("telescope.actions")
       local fb_actions = require("telescope").extensions.file_browser.actions
+      local action_layout = require("telescope.actions.layout")
       local function telescope_buffer_dir()
         return vim.fn.expand("%:p:h")
       end
+
+      opts.defaults = vim.tbl_deep_extend("force", opts.defaults, {
+        wrap_result = true,
+        mappings = {
+          n = {
+            ["<M-p>"] = action_layout.toggle_preview,
+          },
+          i = {
+            ["<M-p>"] = action_layout.toggle_preview,
+          },
+        },
+      })
+
+      opts.pickers = {
+        find_files = {
+          follow = true,
+        },
+      }
 
       opts.extensions = {
         file_browser = {
@@ -49,6 +68,7 @@ return {
           cwd = telescope_buffer_dir(),
           respect_gitignroe = false,
           hidden = true,
+          follow_symlink = true,
           grouped = true,
           previewer = false,
           initial_mode = "normal",
@@ -92,6 +112,8 @@ return {
                   actions.move_selection_next(prompt_bufnr)
                 end
               end,
+              ["<C-f>"] = actions.preview_scrolling_down,
+              ["<C-b>"] = actions.preview_scrolling_up,
             },
           },
         },

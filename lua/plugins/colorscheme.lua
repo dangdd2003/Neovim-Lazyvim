@@ -3,9 +3,9 @@ return {
     "LazyVim/LazyVim",
     opts = {
       -- colorscheme = "tokyonight",
-      colorscheme = "catppuccin",
+      -- colorscheme = "catppuccin",
       -- colorscheme = "gruvbox",
-      -- colorscheme = "solarized-osaka",
+      colorscheme = "solarized-osaka",
       -- colorscheme = "kanagawa",
     },
   },
@@ -30,7 +30,7 @@ return {
 
   {
     "catppuccin/nvim",
-    -- enabled = false,
+    enabled = false,
     lazy = true,
     name = "catppuccin",
     opts = {
@@ -48,7 +48,7 @@ return {
 
   {
     "craftzdog/solarized-osaka.nvim",
-    enabled = false,
+    -- enabled = false,
     lazy = false,
     priority = 1000,
     opts = {

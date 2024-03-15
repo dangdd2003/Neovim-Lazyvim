@@ -18,4 +18,5 @@ if vim.g.neovide then
   vim.g.neovide_cursor_vfx_mode = "railgun"
 end
 
+-- Copy to system clipboard
 vim.opt.clipboard = "unnamedplus"
