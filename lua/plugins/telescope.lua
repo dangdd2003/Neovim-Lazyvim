@@ -46,6 +46,9 @@ return {
 
       opts.defaults = vim.tbl_deep_extend("force", opts.defaults, {
         wrap_result = true,
+        preview = {
+          filesize_limit = 1, -- MB
+        },
         mappings = {
           n = {
             ["<M-p>"] = action_layout.toggle_preview,
@@ -66,9 +69,9 @@ return {
         file_browser = {
           path = "%:p:h",
           cwd = telescope_buffer_dir(),
-          respect_gitignroe = false,
+          respect_gitignore = false,
           hidden = true,
-          follow_symlink = true,
+          follow_symlinks = true,
           grouped = true,
           previewer = false,
           initial_mode = "normal",
@@ -103,12 +106,12 @@ return {
               ["h"] = fb_actions.goto_parent_dir,
               ["<bs>"] = fb_actions.goto_parent_dir,
               ["<C-u>"] = function(prompt_bufnr)
-                for i = 1, 10 do
+                for i = 1, 5 do
                   actions.move_selection_previous(prompt_bufnr)
                 end
               end,
               ["<C-d>"] = function(prompt_bufnr)
-                for i = 1, 10 do
+                for i = 1, 5 do
                   actions.move_selection_next(prompt_bufnr)
                 end
               end,
