@@ -15,6 +15,10 @@ keymap.set("n", "<C-a>", "gg<S-v>G", { desc = "Select all" })
 keymap.set({ "n", "v" }, "<C-b>", "^", { desc = "Beginning of line" })
 keymap.set({ "n", "v" }, "<C-e>", "$", { desc = "End of line" })
 
+-- Scroll by line
+keymap.set("n", "<C-n>", "<C-e>")
+keymap.set("n", "<C-p>", "<C-y>")
+
 -- Go to beginning and ending in insert mode
 keymap.set("i", "<C-b>", "<ESC>^i", { desc = "Beginning of line" })
 keymap.set("i", "<C-e>", "<End>", { desc = "End of line" })
@@ -25,9 +29,6 @@ keymap.set("i", "<C-l>", "<Right>", { desc = "Move right" })
 keymap.set("i", "<C-j>", "<Down>", { desc = "Move down" })
 keymap.set("i", "<C-k>", "<Up>", { desc = "Move up" })
 
--- Toggle neotree
-keymap.set("n", "<C-n>", "<leader>fE", { desc = "Explorer NeoTree (cwd)", remap = true })
-
 -- Vimtex keymaps
 keymap.set("n", "<Leader>vc", "<Cmd>VimtexCompile<CR>", { desc = "Vimtex Compile" })
 keymap.set("n", "<Leader>vx", "<Cmd>VimtexClean<CR>", { desc = "Vimtex Clean" })
@@ -37,7 +38,7 @@ keymap.set("i", "?", "?<c-g>u")
 keymap.set("i", "/", "/<c-g>u")
 keymap.set("i", ":", ":<c-g>u")
 
--- Git
+-- Git blame by line
 keymap.set("n", "<Leader>gb", "<Cmd>Gitsigns toggle_current_line_blame<CR>", { desc = "Toggle Git Line Blame" })
 
 -- Delete unused keymap

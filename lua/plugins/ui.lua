@@ -166,20 +166,4 @@ return {
       })
     end,
   },
-
-  -- colorizer - highlight corlor
-  {
-    "NvChad/nvim-colorizer.lua",
-    opts = {
-      user_default_options = {
-        RRGGBBAA = true,
-        AARRGGBB = true,
-        rgb_fn = true,
-        hsl_fn = true,
-        css = true,
-        css_fn = true,
-        tailwind = true,
-      },
-    },
-  },
 }
