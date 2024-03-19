@@ -1,4 +1,5 @@
 return {
+  -- nvim-cmp - auto completion
   {
     "hrsh7th/nvim-cmp",
     opts = {

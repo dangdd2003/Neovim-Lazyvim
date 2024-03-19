@@ -9,7 +9,7 @@ local keymap = vim.keymap
 keymap.set("n", "<C-c>", "<cmd> %y+ <CR>", { desc = "Copy all" })
 
 -- Select all
-keymap.set("n", "<C-a>", "gg<S-v>G", { desc = "Select all" })
+-- keymap.set("n", "<C-a>", "gg<S-v>G", { desc = "Select all" })
 
 -- Go to beginning and ending in normal mode
 keymap.set({ "n", "v" }, "<C-b>", "^", { desc = "Beginning of line" })
