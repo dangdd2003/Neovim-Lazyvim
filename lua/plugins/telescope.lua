@@ -45,6 +45,9 @@ return {
       end
 
       opts.defaults = vim.tbl_deep_extend("force", opts.defaults, {
+        file_ignore_patterns = {
+          "node_modules",
+        },
         wrap_result = true,
         preview = {
           filesize_limit = 1, -- MB

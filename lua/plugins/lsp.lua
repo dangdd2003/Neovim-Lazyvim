@@ -130,4 +130,16 @@ return {
       end,
     },
   },
+
+  -- auto stop lsp
+  {
+    "zeioth/garbage-day.nvim",
+    dependencies = "neovim/nvim-lspconfig",
+    event = "VeryLazy",
+    opts = {
+      grace_period = 60 * 5,
+      wakeup_delay = 1000,
+      notifications = true,
+    },
+  },
 }
