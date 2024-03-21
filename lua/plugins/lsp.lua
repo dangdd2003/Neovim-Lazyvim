@@ -114,18 +114,27 @@ return {
     ---@diagnostic disable-next-line: missing-fields
     opts = {
       jdtls = function(opts)
+        opts.settings = {
+          java = {
+            settings = {
+              inlayhints = {
+                parameterNames = {
+                  enabled = true,
+                  exclusions = {
+                    "**/node_modules/**",
+                    "**/.metadata/**",
+                    "**/archetype-resources/**",
+                    "**/META-INF/maven/**",
+                    "/**/test/**",
+                  },
+                },
+              },
+            },
+          },
+        }
         local install_path = require("mason-registry").get_package("jdtls"):get_install_path()
         local jvmArg = "-javaagent:" .. install_path .. "/lombok.jar"
         table.insert(opts.cmd, "--jvm-arg=" .. jvmArg) -- Project Lombok Linting
-        table.insert(opts, { -- Codelens
-          require("lazyvim.util").lsp.on_attach(function(_, buffer)
-            vim.lsp.codelens.refresh()
-            vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-              buffer = buffer,
-              callback = vim.lsp.codelens.refresh,
-            })
-          end),
-        })
         return opts
       end,
     },
