@@ -80,14 +80,14 @@ return {
         desc = "Harpoon File",
       },
       {
-        "<leader>n",
+        "<A-n>",
         function()
           require("harpoon"):list():next()
         end,
         desc = "Harpoon Next File",
       },
       {
-        "<leader>p",
+        "<A-p>",
         function()
           require("harpoon"):list():prev()
         end,
