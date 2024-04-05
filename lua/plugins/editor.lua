@@ -66,4 +66,33 @@ return {
       },
     },
   },
+
+  -- harpoon
+  {
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    keys = {
+      {
+        "<leader>H",
+        function()
+          require("harpoon"):list():add()
+        end,
+        desc = "Harpoon File",
+      },
+      {
+        "<leader>n",
+        function()
+          require("harpoon"):list():next()
+        end,
+        desc = "Harpoon Next File",
+      },
+      {
+        "<leader>p",
+        function()
+          require("harpoon"):list():prev()
+        end,
+        desc = "Harpoon Previous File",
+      },
+    },
+  },
 }
