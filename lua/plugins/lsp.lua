@@ -80,6 +80,14 @@ return {
             end
           end)
         end,
+        clangd = function()
+          require("lazyvim.util").lsp.on_attach(function(client)
+            if client.name == "clangd" then
+              require("clangd_extensions.inlay_hints").setup_autocmd()
+              require("clangd_extensions.inlay_hints").set_inlay_hints()
+            end
+          end)
+        end,
       },
     },
   },
@@ -121,6 +129,7 @@ return {
   -- auto stop lsp
   {
     "zeioth/garbage-day.nvim",
+    enabled = false,
     dependencies = "neovim/nvim-lspconfig",
     event = "VeryLazy",
     opts = {
