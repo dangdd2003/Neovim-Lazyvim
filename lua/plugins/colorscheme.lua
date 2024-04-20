@@ -5,8 +5,8 @@ return {
       -- colorscheme = "tokyonight",
       -- colorscheme = "catppuccin",
       -- colorscheme = "gruvbox",
-      colorscheme = "solarized-osaka",
-      -- colorscheme = "kanagawa",
+      -- colorscheme = "solarized-osaka",
+      colorscheme = "kanagawa",
     },
   },
 
@@ -48,7 +48,7 @@ return {
 
   {
     "craftzdog/solarized-osaka.nvim",
-    -- enabled = false,
+    enabled = false,
     lazy = false,
     priority = 1000,
     opts = {
@@ -72,7 +72,7 @@ return {
 
   {
     "rebelot/kanagawa.nvim",
-    enabled = false,
+    -- enabled = false,
     opts = {
       transparent = true,
       theme = "dragon",

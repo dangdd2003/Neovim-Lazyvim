@@ -79,8 +79,9 @@ return {
   {
     "folke/which-key.nvim",
     opts = function(_, opts)
-      if require("lazyvim.util").has("noice.nvim") then
-        opts.defaults["<leader>v"] = { name = "+vimtex" }
+      local plugins = require("lazyvim.util")
+      if plugins.has("telescope.nvim") then
+        opts.defaults["f"] = { name = "+find" }
       end
     end,
   },

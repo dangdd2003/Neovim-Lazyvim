@@ -4,8 +4,17 @@ return {
     "hrsh7th/nvim-cmp",
     opts = {
       window = {
+        completion = {
+          border = "rounded",
+          winhighlight = "Normal:None,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",
+          winblend = 0,
+          scrollbar = false,
+          side_padding = 0,
+        },
         documentation = {
-          winhighlight = "Normal:Pmenu",
+          border = "rounded",
+          winblend = 0,
+          scrollbar = false,
         },
       },
     },
