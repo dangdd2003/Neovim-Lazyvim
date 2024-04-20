@@ -19,14 +19,14 @@ return {
         desc = "Find Plugin File",
       },
       {
-        "fp",
+        ";p",
         function()
           require("telescope.builtin").find_files({ cwd = require("lazy.core.config").options.root })
         end,
         desc = "Find Plugin File",
       },
       {
-        "fb",
+        ";b",
         function()
           local fb_actions = require("telescope").extensions.file_browser
           fb_actions.file_browser()
@@ -34,17 +34,17 @@ return {
         desc = "File Browser (current buffer)",
       },
       -- find
-      { "fa", "<cmd>Telescope find_files follow=true no_ignore=true hidden=true<CR>", desc = "Find All Files" },
-      { "fc", LazyVim.telescope.config_files(), desc = "Find Config File" },
-      { "ff", LazyVim.telescope("files"), desc = "Find Files (Root Dir)" },
-      { "fF", LazyVim.telescope("files", { cwd = false }), desc = "Find Files (cwd)" },
-      { "fg", "<cmd>Telescope git_files<cr>", desc = "Find Files (git-files)" },
-      { "fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
-      { "fR", LazyVim.telescope("oldfiles", { cwd = vim.uv.cwd() }), desc = "Recent (cwd)" },
-      { "fk", "<cmd>Telescope keymaps<cr>", desc = "Key Maps" },
-      { "fh", "<cmd>Telescope help_tags<cr>", desc = "Help Pages" },
-      { "fw", LazyVim.telescope("grep_string", { word_match = "-w" }), desc = "Word (Root Dir)" },
-      { "fW", LazyVim.telescope("grep_string", { cwd = false, word_match = "-w" }), desc = "Word (cwd)" },
+      { ";a", "<cmd>Telescope find_files follow=true no_ignore=true hidden=true<CR>", desc = "Find All Files" },
+      { ";c", LazyVim.telescope.config_files(), desc = "Find Config File" },
+      { ";f", LazyVim.telescope("files"), desc = "Find Files (Root Dir)" },
+      { ";F", LazyVim.telescope("files", { cwd = false }), desc = "Find Files (cwd)" },
+      { ";g", "<cmd>Telescope git_files<cr>", desc = "Find Files (git-files)" },
+      { ";r", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
+      { ";R", LazyVim.telescope("oldfiles", { cwd = vim.uv.cwd() }), desc = "Recent (cwd)" },
+      { ";k", "<cmd>Telescope keymaps<cr>", desc = "Key Maps" },
+      { ";h", "<cmd>Telescope help_tags<cr>", desc = "Help Pages" },
+      { ";w", LazyVim.telescope("grep_string", { word_match = "-w" }), desc = "Word (Root Dir)" },
+      { ";W", LazyVim.telescope("grep_string", { cwd = false, word_match = "-w" }), desc = "Word (cwd)" },
     },
     opts = {
       -- from NVChad:https://github.com/NvChad/NvChad/blob/v2.5/lua/nvchad/configs/telescope.lua
