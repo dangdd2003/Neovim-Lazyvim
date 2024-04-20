@@ -29,10 +29,6 @@ keymap.set("i", "<C-l>", "<Right>", { desc = "Move right" })
 keymap.set("i", "<C-j>", "<Down>", { desc = "Move down" })
 keymap.set("i", "<C-k>", "<Up>", { desc = "Move up" })
 
--- Vimtex keymaps
-keymap.set("n", "<Leader>vc", "<Cmd>VimtexCompile<CR>", { desc = "Vimtex Compile" })
-keymap.set("n", "<Leader>vx", "<Cmd>VimtexClean<CR>", { desc = "Vimtex Clean" })
-
 -- Add additional undo breack-points
 keymap.set("i", "?", "?<c-g>u")
 keymap.set("i", "/", "/<c-g>u")
