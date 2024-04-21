@@ -13,6 +13,11 @@ return {
         show_buffer_close_icons = false,
         show_close_icon = false,
       },
+      -- highlights = function()
+      --   if require("lazyvim.util").has("rose-pine") then
+      --     return require("rose-pine.plugins.bufferline")
+      --   end
+      -- end,
     },
   },
 

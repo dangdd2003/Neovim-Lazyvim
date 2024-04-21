@@ -6,7 +6,8 @@ return {
       -- colorscheme = "catppuccin",
       -- colorscheme = "gruvbox",
       -- colorscheme = "solarized-osaka",
-      colorscheme = "kanagawa",
+      -- colorscheme = "kanagawa",
+      colorscheme = "rose-pine",
     },
   },
 
@@ -72,7 +73,7 @@ return {
 
   {
     "rebelot/kanagawa.nvim",
-    -- enabled = false,
+    enabled = false,
     opts = {
       transparent = true,
       theme = "dragon",
@@ -99,6 +100,28 @@ return {
           TelescopeBorder = { bg = "none" },
         }
       end,
+    },
+  },
+
+  {
+    "rose-pine/neovim",
+    -- enabled = false,
+    name = "rose-pine",
+    opts = {
+      dark_variant = "moon",
+      styles = {
+        transparency = true,
+      },
+      highlight_groups = {
+        LineNr = { fg = "iris" },
+        CursorLineNr = { fg = "rose" },
+        TelescopeBorder = { fg = "highlight_high", bg = "none" },
+        TelescopeNormal = { bg = "none" },
+        TelescopePromptNormal = { bg = "none" },
+        TelescopeResultsNormal = { fg = "subtle", bg = "none" },
+        TelescopeSelection = { fg = "text", bg = "base" },
+        TelescopeSelectionCaret = { fg = "rose", bg = "rose" },
+      },
     },
   },
 }
