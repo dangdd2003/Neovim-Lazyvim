@@ -9,7 +9,6 @@ return {
           winhighlight = "Normal:None,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",
           winblend = 0,
           scrollbar = false,
-          side_padding = 0,
         },
         documentation = {
           border = "rounded",
