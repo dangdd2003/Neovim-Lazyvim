@@ -13,11 +13,11 @@ return {
         show_buffer_close_icons = false,
         show_close_icon = false,
       },
-      -- highlights = function()
-      --   if require("lazyvim.util").has("rose-pine") then
-      --     return require("rose-pine.plugins.bufferline")
-      --   end
-      -- end,
+      highlights = function()
+        if LazyVim.has("rose-pine") then
+          return require("rose-pine.plugins.bufferline")
+        end
+      end,
     },
   },
 
@@ -42,6 +42,18 @@ return {
       })
       opts.presets.lsp_doc_border = true
       opts.presets.inc_rename = true
+    end,
+  },
+
+  -- notification
+  {
+    "rcarriga/nvim-notify",
+    opts = function(_, opts)
+      -- enable animation only using neovide
+      if vim.g.neovide then
+        opts.stages = "fade_in_slide_out"
+        opts.timeout = 1000
+      end
     end,
   },
 
