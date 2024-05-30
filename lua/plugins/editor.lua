@@ -98,4 +98,26 @@ return {
       },
     },
   },
+
+  -- surrounding
+  {
+    "kylechui/nvim-surround",
+    version = "*",
+    event = "VeryLazy",
+    config = function()
+      require("nvim-surround").setup({
+        keymaps = {
+          normal = "gs",
+          normal_cur = "gsa",
+          normal_line = "gS",
+          normal_cur_line = "gSA",
+          visual = "gsa",
+          visual_line = "gSA",
+          delete = "gsd",
+          change = "gsc",
+          change_line = "gSC",
+        },
+      })
+    end,
+  },
 }
