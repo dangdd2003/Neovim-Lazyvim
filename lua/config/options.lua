@@ -16,7 +16,7 @@ vim.opt.backspace = { "start", "eol", "indent" }
 vim.opt.path:append({ "**" })
 vim.opt.wildignore:append({ "*/node_modules/*" })
 vim.opt.formatoptions:append({ "r" })
-vim.opt.guicursor = "n-v-i-c:block-Cursor"
+-- vim.opt.guicursor = "n-v-i-c:block-Cursor"
 
 -- deafaut terminal for windows
 if vim.fn.has("win32") == 1 then
@@ -32,4 +32,5 @@ if vim.g.neovide then
   vim.o.guifont = "Hack Nerd Font:h11"
   vim.g.neovide_hide_mouse_when_typing = true
   vim.g.neovide_cursor_vfx_mode = "railgun"
+  -- vim.g.neovide_transparency = 0.7
 end
