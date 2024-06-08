@@ -3,13 +3,10 @@ return {
   -- nvim-lspconfig
   {
     "neovim/nvim-lspconfig",
-    -- eslint
     init = function()
       local keys = require("lazyvim.plugins.lsp.keymaps").get()
       keys[#keys + 1] = { "<c-k>", mode = "i", false }
     end,
-    ---@type lspconfig.options
-    ---@diagnostic disable-next-line: missing-fields
     opts = {
       servers = {
         eslint = {},
@@ -29,7 +26,6 @@ return {
         },
         html = {},
         lua_ls = {
-          single_file_support = true,
           settings = {
             Lua = {
               workspaceWord = {
@@ -38,14 +34,6 @@ return {
               completion = {
                 workspaceWord = true,
                 callSnippet = "Both",
-              },
-              doc = {
-                privateName = { "^_" },
-              },
-              hint = {
-                enable = true,
-                setType = false,
-                paramType = true,
               },
               type = {
                 castNumberToInteger = true,
@@ -64,14 +52,6 @@ return {
             end
           end)
         end,
-        clangd = function()
-          require("lazyvim.util").lsp.on_attach(function(client)
-            if client.name == "clangd" then
-              require("clangd_extensions.inlay_hints").setup_autocmd()
-              require("clangd_extensions.inlay_hints").set_inlay_hints()
-            end
-          end)
-        end,
       },
     },
   },
@@ -80,8 +60,6 @@ return {
   {
     "mfussenegger/nvim-jdtls",
     enabled = false,
-    ---@type lspconfig.options.jdtls
-    ---@diagnostic disable-next-line: missing-fields
     opts = {
       jdtls = function(opts)
         opts.settings = {
