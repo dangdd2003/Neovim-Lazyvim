@@ -45,7 +45,7 @@ keymap.set("n", "<Leader>gb", function()
   else
     LazyVim.warn("Disabled git blame by line", { title = "Gitsigns" })
   end
-end)
+end, { desc = "Git Blame By Line" })
 
 -- Delete unused keymap
 keymap.del("n", "<S-h>")
