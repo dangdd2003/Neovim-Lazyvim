@@ -1,15 +1,7 @@
 return {
   {
     "nvim-telescope/telescope.nvim",
-    dependencies = {
-      "nvim-telescope/telescope-file-browser.nvim",
-
-      -- cmake - windows
-      -- {
-      --   "nvim-telescope/telescope-fzf-native.nvim",
-      --   build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
-      -- },
-    },
+    dependencies = { "nvim-telescope/telescope-file-browser.nvim" },
     keys = {
       {
         "<leader>fp",
@@ -35,16 +27,16 @@ return {
       },
       -- find
       { "fa", "<cmd>Telescope find_files follow=true no_ignore=true hidden=true<CR>", desc = "Find All Files" },
-      { "fc", LazyVim.telescope.config_files(), desc = "Find Config File" },
-      { "ff", LazyVim.telescope("files"), desc = "Find Files (Root Dir)" },
-      { "fF", LazyVim.telescope("files", { cwd = false }), desc = "Find Files (cwd)" },
+      { "fc", LazyVim.pick.config_files(), desc = "Find Config File" },
+      { "ff", LazyVim.pick("auto"), desc = "Find Files (Root Dir)" },
+      { "fF", LazyVim.pick("auto", { root = false }), desc = "Find Files (cwd)" },
       { "fg", "<cmd>Telescope git_files<cr>", desc = "Find Files (git-files)" },
       { "fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
-      { "fR", LazyVim.telescope("oldfiles", { cwd = vim.uv.cwd() }), desc = "Recent (cwd)" },
+      { "fR", LazyVim.pick("oldfiles", { cwd = vim.uv.cwd() }), desc = "Recent (cwd)" },
       { "fk", "<cmd>Telescope keymaps<cr>", desc = "Key Maps" },
       { "fh", "<cmd>Telescope help_tags<cr>", desc = "Help Pages" },
-      { "fw", LazyVim.telescope("live_grep"), desc = "Grep (Root Dir)" },
-      { "fw", LazyVim.telescope("live_grep", { cwd = false }), desc = "Grep (cwd)" },
+      { "fw", LazyVim.pick("live_grep"), desc = "Grep (Root Dir)" },
+      { "fW", LazyVim.pick("live_grep", { root = false }), desc = "Grep (cwd)" },
     },
     opts = {
       -- from NVChad:https://github.com/NvChad/NvChad/blob/v2.5/lua/nvchad/configs/telescope.lua
