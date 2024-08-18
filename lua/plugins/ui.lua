@@ -92,17 +92,6 @@ return {
     end,
   },
 
-  -- which-key
-  {
-    "folke/which-key.nvim",
-    opts = function(_, opts)
-      local plugins = require("lazyvim.util")
-      if plugins.has("telescope.nvim") then
-        opts.defaults["f"] = { name = "+find" }
-      end
-    end,
-  },
-
   -- lualine - statusline
   {
     "nvim-lualine/lualine.nvim",

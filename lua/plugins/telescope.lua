@@ -39,7 +39,6 @@ return {
       { "fW", LazyVim.pick("live_grep", { root = false }), desc = "Grep (cwd)" },
     },
     opts = {
-      -- from NVChad:https://github.com/NvChad/NvChad/blob/v2.5/lua/nvchad/configs/telescope.lua
       pickers = {
         find_files = {
           follow = true,

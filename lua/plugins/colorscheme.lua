@@ -5,9 +5,9 @@ return {
       -- colorscheme = "tokyonight",
       -- colorscheme = "catppuccin",
       -- colorscheme = "gruvbox",
-      -- colorscheme = "solarized-osaka",
+      colorscheme = "solarized-osaka",
       -- colorscheme = "kanagawa",
-      colorscheme = "rose-pine",
+      -- colorscheme = "rose-pine",
     },
   },
 
@@ -49,11 +49,11 @@ return {
 
   {
     "craftzdog/solarized-osaka.nvim",
-    enabled = false,
+    -- enabled = false,
     lazy = false,
     priority = 1000,
     opts = {
-      -- transparent = false,
+      transparent = false,
       styles = {
         sidebars = "transparent",
         floats = "transparent",
@@ -105,7 +105,7 @@ return {
 
   {
     "rose-pine/neovim",
-    -- enabled = false,
+    enabled = false,
     name = "rose-pine",
     opts = {
       dark_variant = "moon",
