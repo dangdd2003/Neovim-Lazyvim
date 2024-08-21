@@ -70,35 +70,6 @@ return {
     },
   },
 
-  -- harpoon
-  {
-    "ThePrimeagen/harpoon",
-    branch = "harpoon2",
-    keys = {
-      {
-        "<leader>H",
-        function()
-          require("harpoon"):list():add()
-        end,
-        desc = "Harpoon File",
-      },
-      {
-        "<A-n>",
-        function()
-          require("harpoon"):list():next()
-        end,
-        desc = "Harpoon Next File",
-      },
-      {
-        "<A-p>",
-        function()
-          require("harpoon"):list():prev()
-        end,
-        desc = "Harpoon Previous File",
-      },
-    },
-  },
-
   -- surrounding
   {
     "kylechui/nvim-surround",
