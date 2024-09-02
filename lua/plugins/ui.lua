@@ -98,6 +98,7 @@ return {
     event = "VeryLazy",
     opts = {
       options = {
+        theme = "solarized",
         -- section_separators = { left = "", right = "" },
         -- component_separators = { left = "", right = "" },
         -- component_separators = { left = "", right = "" },

@@ -8,6 +8,9 @@ return {
       keys[#keys + 1] = { "<c-k>", mode = "i", false }
     end,
     opts = {
+      inlay_hints = {
+        enabled = false,
+      },
       servers = {
         eslint = {},
         vtsls = {
@@ -28,7 +31,7 @@ return {
         lua_ls = {
           settings = {
             Lua = {
-              workspaceWord = {
+              workspace = {
                 checkThirdParty = false,
               },
               completion = {
