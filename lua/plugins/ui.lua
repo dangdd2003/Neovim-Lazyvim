@@ -98,7 +98,6 @@ return {
     event = "VeryLazy",
     opts = {
       options = {
-        theme = "solarized",
         -- section_separators = { left = "", right = "" },
         -- component_separators = { left = "", right = "" },
         -- component_separators = { left = "", right = "" },
@@ -190,12 +189,9 @@ return {
 
   -- discord presence
   {
-    "IogaMaster/neocord",
+    "vyfor/cord.nvim",
+    build = "./build || .\\build",
     event = "VeryLazy",
-    config = function()
-      require("neocord").setup({
-        global_timer = true,
-      })
-    end,
+    opts = {},
   },
 }

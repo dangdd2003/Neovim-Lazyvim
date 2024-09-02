@@ -14,6 +14,7 @@ if colorscheme == "tokyonight" then
     lazyvim,
     {
       "folke/tokyonight.nvim",
+      priority = 1000,
       opts = {
         style = "storm",
         transparent = true,
@@ -34,7 +35,7 @@ elseif colorscheme == "catppuccin" then
     lazyvim,
     {
       "catppuccin/nvim",
-      lazy = true,
+      priority = 1000,
       name = "catppuccin",
       opts = {
         flavour = "macchiato",
@@ -54,8 +55,6 @@ elseif colorscheme == "solarized-osaka" then
     lazyvim,
     {
       "craftzdog/solarized-osaka.nvim",
-      -- enabled = false,
-      lazy = false,
       priority = 1000,
       opts = {
         -- transparent = false,
@@ -71,6 +70,7 @@ elseif colorscheme == "solarized" then
     lazyvim,
     {
       "maxmx03/solarized.nvim",
+      priority = 1000,
       opts = {
         transparent = {
           enabled = true,
@@ -89,43 +89,9 @@ elseif colorscheme == "gruvbox" then
     lazyvim,
     {
       "ellisonleao/gruvbox.nvim",
-      -- enabled = false,
       priority = 1000,
-      config = true,
       opts = {
         transparent_mode = true,
-      },
-    },
-
-    {
-      "rebelot/kanagawa.nvim",
-      -- enabled = false,
-      opts = {
-        transparent = true,
-        theme = "dragon",
-        background = {
-          dark = "dragon",
-          light = "lotus",
-        },
-        colors = {
-          theme = {
-            all = {
-              ui = {
-                bg_gutter = "none",
-              },
-            },
-          },
-        },
-        overrides = function(colors)
-          local theme = colors.theme
-          return {
-            NormalFloat = { bg = "none" },
-            FloatBorder = { bg = "none" },
-            FloatTitle = { bg = "none" },
-            NormalDark = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m3 },
-            TelescopeBorder = { bg = "none" },
-          }
-        end,
       },
     },
   }
@@ -134,7 +100,7 @@ elseif colorscheme == "kanagawa" then
     lazyvim,
     {
       "rebelot/kanagawa.nvim",
-      -- enabled = false,
+      priority = 1000,
       opts = {
         transparent = true,
         theme = "dragon",
@@ -169,7 +135,7 @@ elseif colorscheme == "rose-pine" then
     lazyvim,
     {
       "rose-pine/neovim",
-      -- enabled = false,
+      priority = 1000,
       name = "rose-pine",
       opts = {
         dark_variant = "moon",
