@@ -1,5 +1,5 @@
 -- available configured colorschemes:
--- "tokyonight", "catppuccin", "solarized-osaka", "solarized", "gruvbox", "kanagawa", "rose-pine"
+-- "tokyonight", "catppuccin", "solarized-osaka", "solarized", "everforest", "gruvbox", "kanagawa", "rose-pine"
 local colorscheme = "solarized-osaka" -- <- set colorscheme here
 
 local lazyvim = {
@@ -82,6 +82,25 @@ elseif colorscheme == "solarized" then
           functions = { italic = true },
         },
       },
+    },
+  }
+elseif colorscheme == "everforest" then
+  return {
+    lazyvim,
+    {
+      "neanias/everforest-nvim",
+      priority = 1000,
+      config = function()
+        require("everforest").setup({
+          transparent_background_level = 2,
+          italics = true,
+          inlay_hints_background = "dimmed",
+          on_highlights = function(hl)
+            hl.NormalFloat = { bg = "none" }
+            hl.FloatBorder = { bg = "none" }
+          end,
+        })
+      end,
     },
   }
 elseif colorscheme == "gruvbox" then

@@ -111,6 +111,9 @@ return {
     "neovim/nvim-lspconfig",
     opts = function()
       require("lspconfig.ui.windows").default_options.border = "rounded"
+      vim.diagnostic.config({
+        float = { border = "rounded" },
+      })
     end,
   },
 
@@ -143,7 +146,7 @@ return {
           },
         },
         window = {
-          margin = { vertical = 0, horizontal = 0 },
+          margin = { vertical = 1, horizontal = 0 },
         },
         hide = {
           cursorline = true,

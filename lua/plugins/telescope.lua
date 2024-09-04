@@ -24,6 +24,7 @@ return {
       end,
       desc = "File Browser (current buffer)",
     },
+    { "<leader>fz", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Fuzzy Find (buffer)" },
 
     -- short binding find
     { "fa", "<cmd>Telescope find_files follow=true no_ignore=true hidden=true<CR>", desc = "Find All Files" },
@@ -39,6 +40,7 @@ return {
     { "fh", "<cmd>Telescope help_tags<cr>", desc = "Help Pages" },
     { "fw", LazyVim.pick("live_grep"), desc = "Grep (Root Dir)" },
     { "fW", LazyVim.pick("live_grep", { root = false }), desc = "Grep (cwd)" },
+    { "fz", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Fuzzy Find (buffer)" },
   },
   opts = {
     pickers = {
@@ -71,18 +73,13 @@ return {
   },
   config = function(_, opts)
     local actions = require("telescope.actions")
+    local action_layout = require("telescope.actions.layout")
     local fb_actions = require("telescope").extensions.file_browser.actions
     local function telescope_buffer_dir()
       return vim.fn.expand("%:p:h")
     end
-    opts.mappings = {
-      n = {
-        ["<M-p>"] = require("telescope.actions.layout").toggle_preview,
-      },
-      i = {
-        ["<M-p>"] = require("telescope.actions.layout").toggle_preview,
-      },
-    }
+    opts.defaults.mappings.n["<M-p>"] = action_layout.toggle_preview
+    opts.defaults.mappings.i["<M-p>"] = action_layout.toggle_preview
     opts.extensions = {
       file_browser = {
         path = "%:p:h",
