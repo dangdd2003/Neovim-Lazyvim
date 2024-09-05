@@ -1,5 +1,6 @@
--- available configured colorschemes:
--- "tokyonight", "catppuccin", "solarized-osaka", "solarized", "everforest", "gruvbox", "kanagawa", "rose-pine"
+-- available configured colorschemes: "tokyonight", "catppuccin", "solarized-osaka", "solarized",
+-- "everforest", "gruvbox", "gruvbox-material", "kanagawa", "rose-pine", "monokai-pro"(cost very long time to load),
+-- "onedark", "onedarkpro","material", "nightfox", "nightfly", "moonfly"
 local colorscheme = "solarized-osaka" -- <- set colorscheme here
 
 local lazyvim = {
@@ -17,15 +18,16 @@ if colorscheme == "tokyonight" then
       priority = 1000,
       opts = {
         style = "storm",
-        transparent = true,
-        styles = {
-          sidebars = "transparent",
-          floats = "transparent",
-        },
+        -- transparent = true,
+        -- styles = {
+        --   sidebars = "transparent",
+        --   floats = "transparent",
+        -- },
         -- custom line number color
         on_highlights = function(highlights, colors)
-          highlights.LineNr = { fg = colors.yellow }
-          highlights.CursorLineNr = { fg = colors.green }
+          highlights.LineNr = { fg = colors.purple }
+          highlights.LineNrAbove = { fg = colors.purple }
+          highlights.LineNrBelow = { fg = colors.purple }
         end,
       },
     },
@@ -39,7 +41,11 @@ elseif colorscheme == "catppuccin" then
       name = "catppuccin",
       opts = {
         flavour = "macchiato",
-        transparent_background = true,
+        -- transparent_background = true,
+        term_colors = true,
+        integrations = {
+          nvim_surround = true,
+        },
         -- custom line number color
         custom_highlights = function(colors)
           return {
@@ -62,6 +68,13 @@ elseif colorscheme == "solarized-osaka" then
           sidebars = "transparent",
           floats = "transparent",
         },
+        on_highlights = function(hl, c)
+          hl.TelescopeBorder = { fg = c.yellow }
+          hl.TelescopePromptBorder = { fg = c.yellow }
+          hl.TelescopePromptTitle = { fg = c.red }
+          hl.TelescopePreviewTitle = { fg = c.red }
+          hl.TelescopeResultsTitle = { fg = c.red }
+        end,
       },
     },
   }
@@ -72,9 +85,9 @@ elseif colorscheme == "solarized" then
       "maxmx03/solarized.nvim",
       priority = 1000,
       opts = {
-        transparent = {
-          enabled = true,
-        },
+        -- transparent = {
+        --   enabled = true,
+        -- },
         -- palette = "selenized",
         variant = "autumn",
         styles = {
@@ -92,7 +105,7 @@ elseif colorscheme == "everforest" then
       priority = 1000,
       config = function()
         require("everforest").setup({
-          transparent_background_level = 2,
+          -- transparent_background_level = 2,
           italics = true,
           inlay_hints_background = "dimmed",
           on_highlights = function(hl)
@@ -110,8 +123,37 @@ elseif colorscheme == "gruvbox" then
       "ellisonleao/gruvbox.nvim",
       priority = 1000,
       opts = {
-        transparent_mode = true,
+        -- transparent_mode = true,
+        overrides = {
+          NormalFloat = { bg = "none" },
+          FloatBorder = { bg = "none" },
+          GruvboxBlueSign = { bg = "none" }, -- remove bg boder for "noice.nvim" cmdline popup
+        },
       },
+    },
+  }
+elseif colorscheme == "gruvbox-material" then
+  return {
+    lazyvim,
+    {
+      "sainnhe/gruvbox-material",
+      priority = 1000,
+      config = function()
+        vim.g.gruvbox_material_background = "soft"
+        -- vim.g.gruvbox_material_transparent_background = true
+        vim.g.gruvbox_material_enable_italic = true
+        vim.g.gruvbox_material_visual = "reverse"
+        vim.g.gruvbox_material_diagnostic_virtual_text = "colored"
+        vim.g.gruvbox_material_inlay_hints_background = "dimmed"
+        -- transparent floating border and window background
+        vim.api.nvim_create_autocmd("ColorScheme", {
+          callback = function()
+            -- vim.o.background = "light"
+            vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+            vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none" })
+          end,
+        })
+      end,
     },
   }
 elseif colorscheme == "kanagawa" then
@@ -121,7 +163,7 @@ elseif colorscheme == "kanagawa" then
       "rebelot/kanagawa.nvim",
       priority = 1000,
       opts = {
-        transparent = true,
+        -- transparent = true,
         theme = "dragon",
         background = {
           dark = "dragon",
@@ -159,7 +201,7 @@ elseif colorscheme == "rose-pine" then
       opts = {
         dark_variant = "moon",
         styles = {
-          transparency = true,
+          -- transparency = true,
         },
         highlight_groups = {
           LineNr = { fg = "iris" },
@@ -171,6 +213,210 @@ elseif colorscheme == "rose-pine" then
           TelescopeSelectionCaret = { fg = "rose", bg = "rose" },
         },
       },
+    },
+  }
+elseif colorscheme == "monokai-pro" then
+  return {
+    lazyvim,
+    {
+      "loctvl842/monokai-pro.nvim",
+      priority = 1000,
+      keys = { { "<leader>C", "<cmd>MonokaiProSelect<cr>", desc = "Select Monokai pro filter" } },
+      opts = {
+        -- transparent_background = true,
+        filter = "octagon", -- "classic" | "octagon" | "pro" | "machine" | "ristretto" | "spectrum"
+        background_clear = {
+          "float_win",
+          "toggleterm",
+          "telescope",
+          "which-key",
+          "renamer",
+          "notify",
+          "neo-tree",
+          "bufferline",
+        },
+      },
+    },
+  }
+elseif colorscheme == "onedark" then
+  return {
+    lazyvim,
+    {
+      "navarasu/onedark.nvim",
+      priority = 1000,
+      keys = {
+        {
+          "<leader>ut",
+          function()
+            require("onedark").toggle()
+          end,
+          desc = "Onedark theme toggle",
+        },
+      },
+      opts = {
+        style = "warmer", -- 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
+        toggle_style_list = { "dark", "darker", "cool", "deep", "warm", "warmer", "light" },
+        -- transparent = true,
+        highlights = {
+          NormalFloat = { bg = "none" },
+          FloatBorder = { bg = "none" },
+        },
+      },
+    },
+  }
+elseif colorscheme == "onedarkpro" then
+  lazyvim.opts.colorscheme = "onedark" -- "onedark" | "onedark_dark" | "onedark_vivid" | "onelight"
+  return {
+    lazyvim,
+    {
+      "olimorris/onedarkpro.nvim",
+      priority = 1000,
+      opts = {
+        options = {
+          -- transparency = true,
+          terminal_colors = true,
+        },
+        styles = {
+          comments = "italic",
+          functions = "italic",
+          keywords = "bold",
+          types = "italic,bold",
+          conditionals = "italic",
+        },
+        highlights = {
+          TelescopeBorder = { bg = "none" },
+          TelescopeNormal = { bg = "none" },
+          TelescopeSelectionCaret = { fg = "red" },
+          FloatBorder = { bg = "None" },
+        },
+      },
+    },
+  }
+elseif colorscheme == "material" then
+  return {
+    lazyvim,
+    {
+      "marko-cerovac/material.nvim",
+      priority = 1000,
+      keys = {
+        {
+          "<leader>ut",
+          function()
+            require("material.functions").toggle_style()
+          end,
+          desc = "Material theme toggle",
+        },
+        {
+          "<leader>th",
+          function()
+            require("material.functions").find_style()
+          end,
+          desc = "Material find style",
+        },
+        {
+          "<leader>t1",
+          function()
+            require("material.functions").change_style("darker")
+          end,
+          desc = "Material Darker theme",
+        },
+        {
+          "<leader>t2",
+          function()
+            require("material.functions").change_style("lighter")
+          end,
+          desc = "Material Lighter theme",
+        },
+        {
+          "<leader>t3",
+          function()
+            require("material.functions").change_style("deep ocean")
+          end,
+          desc = "Material Deep Ocean theme",
+        },
+        {
+          "<leader>t4",
+          function()
+            require("material.functions").change_style("oceanic")
+          end,
+          desc = "Material Oceanic theme",
+        },
+        {
+          "<leader>t5",
+          function()
+            require("material.functions").change_style("palenight")
+          end,
+          desc = "Material Palenight theme",
+        },
+      },
+      opts = {
+        disable = {
+          colored_cursor = true,
+          -- background = true,
+        },
+        -- lualine_style = "stealth", -- should use with transparent
+      },
+      config = function(_, opts)
+        require("material").setup(opts)
+        vim.g.material_style = "deep ocean" -- "darker" | "lighter" | "deep ocean" | "oceanic" | "palenight"
+      end,
+    },
+  }
+elseif colorscheme == "nightfox" then
+  lazyvim.opts.colorscheme = "nightfox" -- "nightfox" | "dayfox" | "dawnfox" | "duskfox" | "nordfox" | "terafox" | "carbonfox"
+  return {
+    lazyvim,
+    {
+      "EdenEast/nightfox.nvim",
+      priority = 1000,
+      opts = {
+        options = {
+          -- transparent = true,
+          styles = {
+            comments = "italic",
+            functions = "italic",
+            keywords = "bold",
+            types = "italic,bold",
+            conditionals = "italic",
+          },
+        },
+        groups = {
+          all = {
+            NormalFloat = { bg = "none" },
+            FloatBorder = { bg = "none" },
+          },
+        },
+      },
+    },
+  }
+elseif colorscheme == "nightfly" then
+  return {
+    lazyvim,
+    {
+      "bluz71/vim-nightfly-colors",
+      priority = 1000,
+      name = "nightfly",
+      config = function()
+        vim.g.nightflyCursorColor = true
+        vim.g.nightflyNormalFloat = true
+        -- vim.g.nightflyTransparent = true
+        vim.g.nightflyVirtualTextColor = true
+      end,
+    },
+  }
+elseif colorscheme == "moonfly" then
+  return {
+    lazyvim,
+    {
+      "bluz71/vim-moonfly-colors",
+      priority = 1000,
+      name = "moonfly",
+      config = function()
+        vim.g.moonflyCursorColor = true
+        vim.g.moonflyNormalFloat = true
+        -- vim.g.moonflyTransparent = true
+        vim.g.moonflyVirtualTextColor = true
+      end,
     },
   }
 else
