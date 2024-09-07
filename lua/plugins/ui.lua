@@ -3,10 +3,13 @@ return {
   -- bufferline
   {
     "akinsho/bufferline.nvim",
-    keys = {
-      { "<Tab>", "<Cmd>BufferLineCycleNext<CR>", desc = "Next Tab" },
-      { "<S-Tab>", "<Cmd>BufferLineCyclePrev<CR>", desc = "Prev Tab" },
-    },
+    keys = function()
+      return {
+        { "<Tab>", "<Cmd>BufferLineCycleNext<CR>", desc = "Next Tab" },
+        { "<S-Tab>", "<Cmd>BufferLineCyclePrev<CR>", desc = "Prev Tab" },
+        { "<leader><Tab>p", "<Cmd>BufferLinePick<CR>", desc = "Pick Tab" },
+      }
+    end,
     opts = {
       options = {
         mode = "tabs",
@@ -16,6 +19,36 @@ return {
       highlights = function()
         if LazyVim.has("rose-pine") then
           return require("rose-pine.plugins.bufferline")
+        elseif LazyVim.has("solarized-osaka.nvim") then
+          local c = require("solarized-osaka.colors").setup()
+          local function apply_bg(color)
+            local highlight = {}
+            local values = {
+              "close_button",
+              "tab",
+              "tab_separator",
+              "buffer",
+              "duplicate",
+              "hint",
+              "hint_diagnostic",
+              "info",
+              "info_diagnostic",
+              "error",
+              "error_diagnostic",
+              "warning",
+              "warning_diagnostic",
+              "modified",
+              "separator",
+              "pick",
+            }
+            for _, value in ipairs(values) do
+              highlight[value .. "_selected"] = { bg = color }
+            end
+
+            return highlight
+          end
+
+          return apply_bg(c.base03)
         end
       end,
     },
@@ -41,7 +74,6 @@ return {
         opts = { skip = true },
       })
       opts.presets.lsp_doc_border = true
-      opts.presets.inc_rename = true
     end,
   },
 
