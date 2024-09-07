@@ -3,10 +3,6 @@ return {
   -- nvim-lspconfig
   {
     "neovim/nvim-lspconfig",
-    init = function()
-      local keys = require("lazyvim.plugins.lsp.keymaps").get()
-      keys[#keys + 1] = { "<c-k>", mode = "i", false }
-    end,
     opts = {
       inlay_hints = {
         enabled = false,
@@ -57,6 +53,17 @@ return {
         end,
       },
     },
+  },
+
+  -- lsp keymaps
+  {
+    "neovim/nvim-lspconfig",
+    opts = function()
+      local keys = require("lazyvim.plugins.lsp.keymaps").get()
+      keys[#keys + 1] = { "<c-k>", mode = "i", false }
+      keys[#keys + 1] =
+        { "<c-d>", vim.lsp.buf.signature_help, mode = "i", desc = "Signature Help", has = "signatureHelp" }
+    end,
   },
 
   -- auto stop lsp
