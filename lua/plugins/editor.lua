@@ -5,6 +5,18 @@ return {
     enabled = false,
   },
 
+  -- which-key - register new keymaps
+  {
+    "folke/which-key.nvim",
+    opts = {
+      preset = "modern",
+      spec = {
+        mode = "n",
+        { "<leader><tab>m", group = "move" },
+      },
+    },
+  },
+
   -- color highlighter
   {
     "echasnovski/mini.hipatterns",

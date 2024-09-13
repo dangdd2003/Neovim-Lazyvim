@@ -74,6 +74,7 @@ return {
         opts = { skip = true },
       })
       opts.presets.lsp_doc_border = true
+      opts.presets.bottom_search = false
     end,
   },
 
@@ -220,13 +221,5 @@ return {
         end,
       })
     end,
-  },
-
-  -- discord presence
-  {
-    "vyfor/cord.nvim",
-    build = "./build || .\\build",
-    event = "VeryLazy",
-    opts = {},
   },
 }

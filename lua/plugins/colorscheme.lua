@@ -69,11 +69,8 @@ elseif colorscheme == "solarized-osaka" then
           floats = "transparent",
         },
         on_highlights = function(hl, c)
-          hl.TelescopeBorder = { fg = c.yellow }
-          hl.TelescopePromptBorder = { fg = c.yellow }
-          hl.TelescopePromptTitle = { fg = c.red }
-          hl.TelescopePreviewTitle = { fg = c.red }
-          hl.TelescopeResultsTitle = { fg = c.red }
+          hl.TelescopeBorder = { fg = c.yellow700 }
+          hl.TelescopeTitle = { fg = c.base04, bg = c.green }
         end,
       },
     },
@@ -206,11 +203,11 @@ elseif colorscheme == "rose-pine" then
         highlight_groups = {
           LineNr = { fg = "iris" },
           CursorLineNr = { fg = "rose" },
-          TelescopeBorder = { fg = "highlight_high", bg = "none" },
+          TelescopeBorder = { fg = "rose", bg = "none" },
+          TelescopeTitle = { fg = "love" },
           TelescopeNormal = { bg = "none" },
-          TelescopePromptNormal = { bg = "none" },
-          TelescopeResultsNormal = { fg = "subtle", bg = "none" },
-          TelescopeSelectionCaret = { fg = "rose", bg = "rose" },
+          TelescopeSelection = { bg = "highlight_med" },
+          TelescopeSelectionCaret = { bg = "highlight_med" },
         },
       },
     },

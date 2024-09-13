@@ -11,13 +11,9 @@ keymap.set("n", "<C-c>", "<cmd> %y+ <CR>", { desc = "Copy all" })
 -- Select all
 -- keymap.set("n", "<C-a>", "gg<S-v>G", { desc = "Select all" })
 
--- Go to beginning and ending in normal mode
-keymap.set({ "n", "v" }, "<C-b>", "^", { desc = "Beginning of line" })
-keymap.set({ "n", "v" }, "<C-e>", "$", { desc = "End of line" })
-
--- Scroll by line
-keymap.set({ "n", "v" }, "<C-n>", "<C-e>")
-keymap.set({ "n", "v" }, "<C-p>", "<C-y>")
+-- tabs
+keymap.set("n", "<leader><tab>ml", "<cmd>tabmove +<CR>", { desc = "Move tab next" })
+keymap.set("n", "<leader><tab>mh", "<cmd>tabmove -<CR>", { desc = "Move tab next" })
 
 -- Go to beginning and ending in insert mode
 keymap.set("i", "<C-b>", "<ESC>^i", { desc = "Beginning of line" })
