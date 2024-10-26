@@ -17,38 +17,48 @@ return {
         show_close_icon = false,
       },
       highlights = function()
-        if LazyVim.has("rose-pine") then
-          return require("rose-pine.plugins.bufferline")
-        elseif LazyVim.has("solarized-osaka.nvim") then
-          local c = require("solarized-osaka.colors").setup()
-          local function apply_bg(color)
-            local highlight = {}
-            local values = {
-              "close_button",
-              "tab",
-              "tab_separator",
-              "buffer",
-              "duplicate",
-              "hint",
-              "hint_diagnostic",
-              "info",
-              "info_diagnostic",
-              "error",
-              "error_diagnostic",
-              "warning",
-              "warning_diagnostic",
-              "modified",
-              "separator",
-              "pick",
-            }
-            for _, value in ipairs(values) do
-              highlight[value .. "_selected"] = { bg = color }
-            end
-
-            return highlight
+        local highlight = {}
+        local values = {
+          "close_button",
+          "tab",
+          "tab_separator",
+          "buffer",
+          "duplicate",
+          "hint",
+          "hint_diagnostic",
+          "info",
+          "info_diagnostic",
+          "error",
+          "error_diagnostic",
+          "warning",
+          "warning_diagnostic",
+          "modified",
+          "separator",
+          "pick",
+        }
+        local function apply_bg(color)
+          for _, value in ipairs(values) do
+            highlight[value .. "_selected"] = { bg = color }
           end
-
-          return apply_bg(c.base03)
+          return highlight
+        end
+        if LazyVim.config.colorscheme == "tokyonight" then
+          local c = require("tokyonight.colors").setup()
+          if require("tokyonight.config").options.transparent then
+            return apply_bg(c.bg_highlight)
+          end
+        elseif LazyVim.config.colorscheme == "rose-pine" then
+          return require("rose-pine.plugins.bufferline")
+        elseif LazyVim.config.colorscheme == "catppuccin" then
+          local c = require("catppuccin.palettes").get_palette()
+          if require("catppuccin").options.transparent_background then
+            return apply_bg(c.base)
+          end
+        elseif LazyVim.config.colorscheme == "solarized-osaka" then
+          local c = require("solarized-osaka.colors").setup()
+          if require("solarized-osaka.config").options.transparent then
+            return apply_bg(c.base03)
+          end
         end
       end,
     },
@@ -82,12 +92,28 @@ return {
   {
     "rcarriga/nvim-notify",
     opts = function(_, opts)
+      opts.stages = "fade_in_slide_out"
       -- enable animation only using neovide
       if vim.g.neovide then
-        opts.stages = "fade_in_slide_out"
         opts.timeout = 1000
       end
     end,
+  },
+
+  -- indentation guide
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    opts = {
+      scope = {
+        include = {
+          node_type = {
+            lua = {
+              "table_constructor",
+            },
+          },
+        },
+      },
+    },
   },
 
   -- dashboard - startup UI
@@ -112,6 +138,7 @@ return {
       end
 
       opts.config.header = vim.split(logo, "\n")
+      table.remove(opts.config.center, 7)
       table.insert(opts.config.center, 2, {
         action = file_browser,
         desc = "  File Browser",
@@ -139,7 +166,7 @@ return {
     },
   },
 
-  -- lsp info window
+  -- lsp floating border
   {
     "neovim/nvim-lspconfig",
     opts = function()
@@ -171,13 +198,34 @@ return {
     "b0o/incline.nvim",
     event = "BufReadPre",
     config = function()
-      require("incline").setup({
+      local highlight
+      if LazyVim.config.colorscheme == "catppuccin" then
+        local c = require("catppuccin.palettes").get_palette()
         highlight = {
           groups = {
-            InclineNormal = { guibg = "#C71585", guifg = "#F2F3F4" },
-            InclineNormalNC = { guibg = "#C0C0C0", guifg = "#8000FF" },
+            InclineNormal = { guibg = c.rosewater, guifg = c.overlay0 },
+            InclineNormalNC = { guibg = c.surface1, guifg = c.lavender },
           },
-        },
+        }
+      elseif LazyVim.config.colorscheme == "solarized-osaka" then
+        local c = require("solarized-osaka.colors").setup()
+        highlight = {
+          groups = {
+            InclineNormal = { guibg = c.yellow100, guifg = c.base03 },
+            InclineNormalNC = { guibg = c.violet700, guifg = c.base3 },
+          },
+        }
+      else
+        local c = require("tokyonight.colors").setup()
+        highlight = {
+          groups = {
+            InclineNormal = { guibg = c.blue2, guifg = c.fg_gutter },
+            InclineNormalNC = { guibg = c.terminal_black, guifg = c.purple },
+          },
+        }
+      end
+      require("incline").setup({
+        highlight = highlight,
         window = {
           margin = { vertical = 1, horizontal = 0 },
         },

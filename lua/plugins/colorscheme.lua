@@ -1,7 +1,7 @@
 -- available configured colorschemes: "tokyonight", "catppuccin", "solarized-osaka", "solarized",
 -- "everforest", "gruvbox", "gruvbox-material", "kanagawa", "rose-pine", "monokai-pro"(cost very long time to load),
 -- "onedark", "onedarkpro","material", "nightfox", "nightfly", "moonfly"
-local colorscheme = "solarized-osaka" -- <- set colorscheme here
+local colorscheme = "catppuccin" -- <---- set colorscheme here
 
 local lazyvim = {
   "LazyVim/LazyVim",
@@ -18,11 +18,11 @@ if colorscheme == "tokyonight" then
       priority = 1000,
       opts = {
         style = "storm",
-        -- transparent = true,
-        -- styles = {
-        --   sidebars = "transparent",
-        --   floats = "transparent",
-        -- },
+        transparent = false,
+        styles = {
+          sidebars = "transparent",
+          floats = "transparent",
+        },
         -- custom line number color
         on_highlights = function(highlights, colors)
           highlights.LineNr = { fg = colors.purple }
@@ -41,16 +41,16 @@ elseif colorscheme == "catppuccin" then
       name = "catppuccin",
       opts = {
         flavour = "macchiato",
-        -- transparent_background = true,
+        transparent_background = false,
         term_colors = true,
         integrations = {
           nvim_surround = true,
         },
         -- custom line number color
-        custom_highlights = function(colors)
+        custom_highlights = function(c)
           return {
-            CursorLineNr = { fg = colors.rosewater },
-            LineNr = { fg = colors.mauve },
+            CursorLineNr = { fg = c.rosewater },
+            LineNr = { fg = c.mauve },
           }
         end,
       },
@@ -63,7 +63,7 @@ elseif colorscheme == "solarized-osaka" then
       "craftzdog/solarized-osaka.nvim",
       priority = 1000,
       opts = {
-        -- transparent = false,
+        transparent = false,
         styles = {
           sidebars = "transparent",
           floats = "transparent",
@@ -82,9 +82,9 @@ elseif colorscheme == "solarized" then
       "maxmx03/solarized.nvim",
       priority = 1000,
       opts = {
-        -- transparent = {
-        --   enabled = true,
-        -- },
+        transparent = {
+          enabled = false,
+        },
         -- palette = "selenized",
         variant = "autumn",
         styles = {
@@ -102,7 +102,7 @@ elseif colorscheme == "everforest" then
       priority = 1000,
       config = function()
         require("everforest").setup({
-          -- transparent_background_level = 2,
+          transparent_background_level = 0, -- { 0, 1, 2 }
           italics = true,
           inlay_hints_background = "dimmed",
           on_highlights = function(hl)
@@ -137,7 +137,7 @@ elseif colorscheme == "gruvbox-material" then
       priority = 1000,
       config = function()
         vim.g.gruvbox_material_background = "soft"
-        -- vim.g.gruvbox_material_transparent_background = true
+        vim.g.gruvbox_material_transparent_background = false
         vim.g.gruvbox_material_enable_italic = true
         vim.g.gruvbox_material_visual = "reverse"
         vim.g.gruvbox_material_diagnostic_virtual_text = "colored"
@@ -160,7 +160,7 @@ elseif colorscheme == "kanagawa" then
       "rebelot/kanagawa.nvim",
       priority = 1000,
       opts = {
-        -- transparent = true,
+        transparent = false,
         theme = "dragon",
         background = {
           dark = "dragon",
@@ -198,7 +198,7 @@ elseif colorscheme == "rose-pine" then
       opts = {
         dark_variant = "moon",
         styles = {
-          -- transparency = true,
+          transparency = false,
         },
         highlight_groups = {
           LineNr = { fg = "iris" },
@@ -220,7 +220,7 @@ elseif colorscheme == "monokai-pro" then
       priority = 1000,
       keys = { { "<leader>C", "<cmd>MonokaiProSelect<cr>", desc = "Select Monokai pro filter" } },
       opts = {
-        -- transparent_background = true,
+        transparent_background = false,
         filter = "octagon", -- "classic" | "octagon" | "pro" | "machine" | "ristretto" | "spectrum"
         background_clear = {
           "float_win",
@@ -253,7 +253,7 @@ elseif colorscheme == "onedark" then
       opts = {
         style = "warmer", -- 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
         toggle_style_list = { "dark", "darker", "cool", "deep", "warm", "warmer", "light" },
-        -- transparent = true,
+        transparent = false,
         highlights = {
           NormalFloat = { bg = "none" },
           FloatBorder = { bg = "none" },
@@ -270,7 +270,7 @@ elseif colorscheme == "onedarkpro" then
       priority = 1000,
       opts = {
         options = {
-          -- transparency = true,
+          transparency = false,
           terminal_colors = true,
         },
         styles = {
@@ -349,7 +349,7 @@ elseif colorscheme == "material" then
       opts = {
         disable = {
           colored_cursor = true,
-          -- background = true,
+          background = false,
         },
         -- lualine_style = "stealth", -- should use with transparent
       },
@@ -368,7 +368,7 @@ elseif colorscheme == "nightfox" then
       priority = 1000,
       opts = {
         options = {
-          -- transparent = true,
+          transparent = false,
           styles = {
             comments = "italic",
             functions = "italic",
@@ -396,7 +396,7 @@ elseif colorscheme == "nightfly" then
       config = function()
         vim.g.nightflyCursorColor = true
         vim.g.nightflyNormalFloat = true
-        -- vim.g.nightflyTransparent = true
+        vim.g.nightflyTransparent = false
         vim.g.nightflyVirtualTextColor = true
       end,
     },
@@ -411,12 +411,12 @@ elseif colorscheme == "moonfly" then
       config = function()
         vim.g.moonflyCursorColor = true
         vim.g.moonflyNormalFloat = true
-        -- vim.g.moonflyTransparent = true
+        vim.g.moonflyTransparent = false
         vim.g.moonflyVirtualTextColor = true
       end,
     },
   }
 else
-  LazyVim.warn("Unknown colorscheme! Use default Tokyonight", { title = "Colorscheme 🌈" })
+  LazyVim.warn('Unknown colorscheme "' .. colorscheme .. '"! Fall back to defalt', { title = "Colorscheme 🌈" })
   return {}
 end

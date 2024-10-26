@@ -31,8 +31,7 @@ keymap.set("i", "/", "/<c-g>u")
 keymap.set("i", ":", ":<c-g>u")
 
 -- Git blame by line
--- keymap.set("n", "<Leader>gb", "<Cmd>Gitsigns toggle_current_line_blame<CR>", { desc = "Toggle Git Line Blame" })
-keymap.set("n", "<Leader>gb", function()
+keymap.set("n", "<Leader>uB", function()
   local gitsigns = require("gitsigns")
   gitsigns.toggle_current_line_blame()
   local status = require("gitsigns.config").config.current_line_blame
