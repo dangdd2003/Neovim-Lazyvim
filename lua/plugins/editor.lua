@@ -124,4 +124,10 @@ return {
       })
     end,
   },
+
+  -- markdown rendering
+  {
+    "MeanderingProgrammer/render-markdown.nvim",
+    ft = { "markdown", "norg", "rmd", "org", "markdown.mdx" },
+  },
 }

@@ -69,6 +69,12 @@ return {
       preview = {
         filesize_limit = 10, -- MB
       },
+
+      file_ignore_patterns = {
+        "^env/",
+        "^data/",
+        "^node_modules/",
+      },
     },
   },
   config = function(_, opts)

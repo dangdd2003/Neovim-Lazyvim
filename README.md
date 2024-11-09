@@ -31,13 +31,13 @@ Move-Item $env:LOCALAPPDATA\nvim-data $env:LOCALAPPDATA\nvim-data.bak
 - Linux/MacOS
 
 ```shell
-git clone https://github.com/dangdd2003/Neovim-Lazyvim.git ~/.config/nvim
+git clone https://github.com/dangdd2003/nvim ~/.config/nvim
 ```
 
 - Windows
 
 ```shell
-git clone https://github.com/dangdd2003/Neovim-Lazyvim.git $env:LOCALAPPDATA\nvim
+git clone https://github.com/dangdd2003/nvim.git $env:LOCALAPPDATA\nvim
 ```
 
 ### Remove `.git` folder for adding to custom repository

@@ -1,29 +1,27 @@
 local M = {}
 
 function M.cowboy()
-  ---@type table?
-  local id
+  ---@type boolean?
   local ok = true
 
   for _, key in ipairs({ "h", "j", "k", "l", "+", "-" }) do
     local count = 0
-    local timer = assert(vim.loop.new_timer())
+    local timer = assert(vim.uv.new_timer())
     local map = key
     vim.keymap.set("n", key, function()
       if vim.v.count > 0 then
         count = 0
       end
-      if count >= 20 then
-        ok, id = pcall(vim.notify, "Hold it, Cowboy!", vim.log.levels.WARN, {
+      if count >= 20 and vim.bo.buftype ~= "nofile" then
+        ok = pcall(vim.notify, "Hold it, Cowboy!", vim.log.levels.WARN, {
           icon = "🤠",
           title = "Heyyyyy!!!",
-          replace = id,
+          id = "cowboy",
           keep = function()
             return count >= 20
           end,
         })
         if not ok then
-          id = nil
           return map
         end
       else

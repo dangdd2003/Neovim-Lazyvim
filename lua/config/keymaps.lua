@@ -31,16 +31,15 @@ keymap.set("i", "/", "/<c-g>u")
 keymap.set("i", ":", ":<c-g>u")
 
 -- Git blame by line
-keymap.set("n", "<Leader>uB", function()
-  local gitsigns = require("gitsigns")
-  gitsigns.toggle_current_line_blame()
-  local status = require("gitsigns.config").config.current_line_blame
-  if status then
-    LazyVim.info("Enabled git blame by line", { title = "Gitsigns" })
-  else
-    LazyVim.warn("Disabled git blame by line", { title = "Gitsigns" })
-  end
-end, { desc = "Git Blame By Line" })
+Snacks.toggle({
+  name = "Git Blame By Line",
+  get = function()
+    return require("gitsigns.config").config.current_line_blame
+  end,
+  set = function()
+    require("gitsigns").toggle_current_line_blame()
+  end,
+}):map("<leader>uB")
 
 -- Delete unused keymap
 keymap.del("n", "<S-h>")

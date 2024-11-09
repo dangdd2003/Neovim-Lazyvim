@@ -48,7 +48,7 @@ require("lazy").setup({
     version = false, -- always use the latest git commit
     -- version = "*", -- try installing the latest stable version for plugins that support semver
   },
-  install = { colorscheme = { "solarized-osaka", "habamax" } },
+  install = { colorscheme = { "catppuccin", "habamax" } },
   checker = { enabled = true, frequency = 86400 }, -- automatically check for plugin updates
   performance = {
     rtp = {
@@ -67,6 +67,6 @@ require("lazy").setup({
   },
   ui = {
     border = "rounded", -- none, single, double, rounded, solid, shadow, or an array
-    backdrop = 100,
+    -- backdrop = 100,
   },
 })

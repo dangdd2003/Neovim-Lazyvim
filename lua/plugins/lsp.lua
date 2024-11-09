@@ -23,7 +23,6 @@ return {
             },
           },
         },
-        html = {},
         lua_ls = {
           settings = {
             Lua = {
@@ -40,6 +39,7 @@ return {
             },
           },
         },
+        -- html = {},
       },
       setup = {
         eslint = function()
@@ -51,6 +51,103 @@ return {
             end
           end)
         end,
+      },
+    },
+  },
+
+  {
+    "mfussenegger/nvim-jdtls",
+    optional = true,
+    opts = {
+      settings = {
+        java = {
+          codeGeneration = {
+            generateComments = true,
+            hashCodeEquals = {
+              useInstanceof = true,
+            },
+            toString = {
+              codeStyle = "String concatenation",
+              skipNullValues = false,
+              template = "${object.className} { ${member.name()}=${member.value}, ${otherMembers} }",
+            },
+            useBlocks = true,
+          },
+          eclipse = {
+            downloadSources = true,
+          },
+          maven = {
+            downloadSources = true,
+          },
+          errors = {
+            incompleteClasspath = {
+              severity = "error",
+            },
+          },
+          completion = {
+            importOrder = {
+              "java",
+              "jakarta",
+              "javax",
+              "io",
+              "com",
+              "org",
+            },
+          },
+          configuration = {
+            updateBuildConfiguration = "interactive",
+          },
+          format = {
+            enabled = true,
+            comments = {
+              enabled = true,
+            },
+          },
+          implementationsCodeLens = {
+            enabled = true,
+          },
+          referencesCodeLens = {
+            enabled = true,
+          },
+          inlayhints = {
+            parameterNames = {
+              enabled = "all",
+            },
+          },
+          jdt = {
+            ls = {
+              androidSupport = {
+                enabled = true,
+              },
+              lombokSupport = {
+                enabled = true,
+              },
+            },
+          },
+          maxConcurrentBuilds = 4,
+          references = {
+            includeAccessors = true,
+            includeDecompiledSources = true,
+          },
+          rename = {
+            enabled = true,
+          },
+          saveActions = {
+            organizeImports = false,
+          },
+          signatureHelp = {
+            enabled = true,
+            description = {
+              enabled = true,
+            },
+          },
+          sources = {
+            organizeImports = {
+              starThreshold = 999,
+              staticStarThreshold = 999,
+            },
+          },
+        },
       },
     },
   },

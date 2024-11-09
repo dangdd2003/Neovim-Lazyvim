@@ -14,13 +14,18 @@ vim.opt.smarttab = true
 vim.opt.breakindent = true
 vim.opt.backspace = { "start", "eol", "indent" }
 vim.opt.path:append({ "**" })
-vim.opt.wildignore:append({ "*/node_modules/*" })
+vim.opt.wildignore = { "*/node_modules/*,node_modules/*", "*/__pycache__/*,__pycache__/*", "*/.git/*,.git/*" }
 vim.opt.formatoptions:append({ "r" })
 -- vim.opt.guicursor = "n-v-i-c:block-Cursor"
 
+vim.g.loaded_python3_provider = 0
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_ruby_provider = 0
+vim.g.loaded_node_provider = 0
+
 -- deafaut terminal for windows
 if vim.fn.has("win32") == 1 then
-  vim.opt.shell = "pwsh"
+  LazyVim.terminal.setup("pwsh")
 end
 
 -- Undercurl
