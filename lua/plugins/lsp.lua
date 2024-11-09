@@ -65,6 +65,7 @@ return {
             generateComments = true,
             hashCodeEquals = {
               useInstanceof = true,
+              useJava7Objects = true,
             },
             toString = {
               codeStyle = "String concatenation",
@@ -102,6 +103,9 @@ return {
             comments = {
               enabled = true,
             },
+            settings = {
+              url = "https://raw.githubusercontent.com/google/styleguide/refs/heads/gh-pages/eclipse-java-google-style.xml",
+            },
           },
           implementationsCodeLens = {
             enabled = true,
@@ -124,7 +128,7 @@ return {
               },
             },
           },
-          maxConcurrentBuilds = 4,
+          maxConcurrentBuilds = 5,
           references = {
             includeAccessors = true,
             includeDecompiledSources = true,
@@ -145,6 +149,17 @@ return {
             organizeImports = {
               starThreshold = 999,
               staticStarThreshold = 999,
+            },
+          },
+          templates = {
+            typeComment = {
+              "/**",
+              " * @Filename ${file_name}",
+              " * @Author Doan Dinh Dang",
+              " * @Date ${date}",
+              " * @Description",
+              " *",
+              " */",
             },
           },
         },
