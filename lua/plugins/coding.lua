@@ -6,13 +6,13 @@ return {
       window = {
         completion = {
           border = "rounded",
-          winhighlight = "Normal:None,FloatBorder:None,CursorLine:PmenuSel,Search:None",
+          winhighlight = "Normal:None,CursorLine:PmenuSel",
           winblend = 0,
           scrollbar = false,
         },
         documentation = {
           border = "rounded",
-          winhighlight = "Normal:None,FloatBorder:None",
+          winhighlight = "Normal:None",
           winblend = 0,
           scrollbar = false,
         },

@@ -20,6 +20,7 @@ return {
   -- color highlighter
   {
     "echasnovski/mini.hipatterns",
+    optional = true,
     event = "BufReadPre",
     opts = {
       highlighters = {
@@ -128,6 +129,7 @@ return {
   -- markdown rendering
   {
     "MeanderingProgrammer/render-markdown.nvim",
+    optional = true,
     ft = { "markdown", "norg", "rmd", "org", "markdown.mdx" },
   },
 }

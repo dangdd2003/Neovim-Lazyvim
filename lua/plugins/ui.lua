@@ -42,19 +42,19 @@ return {
           end
           return highlight
         end
-        if LazyVim.config.colorscheme == "tokyonight" then
+        if (vim.g.colors_name or ""):find("tokyonight") then
           local c = require("tokyonight.colors").setup()
           if require("tokyonight.config").options.transparent then
             return apply_bg(c.bg_highlight)
           end
-        elseif LazyVim.config.colorscheme == "rose-pine" then
+        elseif (vim.g.colors_name or ""):find("rose-pine") then
           return require("rose-pine.plugins.bufferline")
-        elseif LazyVim.config.colorscheme == "catppuccin" then
+        elseif (vim.g.colors_name or ""):find("catppuccin") then
           local c = require("catppuccin.palettes").get_palette()
           if require("catppuccin").options.transparent_background then
             return apply_bg(c.base)
           end
-        elseif LazyVim.config.colorscheme == "solarized-osaka" then
+        elseif (vim.g.colors_name or ""):find("solarized-osaka") then
           local c = require("solarized-osaka.colors").setup()
           if require("solarized-osaka.config").options.transparent then
             return apply_bg(c.base03)
@@ -205,7 +205,7 @@ return {
     event = "BufReadPre",
     config = function()
       local highlight
-      if LazyVim.config.colorscheme == "catppuccin" then
+      if (vim.g.colors_name or ""):find("catppuccin") then
         local c = require("catppuccin.palettes").get_palette()
         highlight = {
           groups = {
@@ -213,7 +213,7 @@ return {
             InclineNormalNC = { guibg = c.surface1, guifg = c.lavender },
           },
         }
-      elseif LazyVim.config.colorscheme == "solarized-osaka" then
+      elseif (vim.g.colors_name or ""):find("solarized-osaka") then
         local c = require("solarized-osaka.colors").setup()
         highlight = {
           groups = {
@@ -221,12 +221,19 @@ return {
             InclineNormalNC = { guibg = c.violet700, guifg = c.base3 },
           },
         }
-      else
+      elseif (vim.g.colors_name or ""):find("tokyonight") then
         local c = require("tokyonight.colors").setup()
         highlight = {
           groups = {
             InclineNormal = { guibg = c.blue2, guifg = c.fg_gutter },
             InclineNormalNC = { guibg = c.terminal_black, guifg = c.purple },
+          },
+        }
+      else
+        highlight = {
+          groups = {
+            InclineNormal = { guibg = "#C71585", guifg = "#F2F3F4" },
+            InclineNormalNC = { guibg = "#C0C0C0", guifg = "#8000FF" },
           },
         }
       end

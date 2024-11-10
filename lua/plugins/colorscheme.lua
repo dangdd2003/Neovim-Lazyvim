@@ -50,7 +50,9 @@ elseif colorscheme == "catppuccin" then
         custom_highlights = function(c)
           return {
             CursorLineNr = { fg = c.rosewater },
+            FloatBorder = { fg = c.maroon },
             LineNr = { fg = c.mauve },
+            TelescopeTitle = { fg = c.base, bg = c.yellow },
           }
         end,
       },
@@ -69,7 +71,7 @@ elseif colorscheme == "solarized-osaka" then
           floats = "transparent",
         },
         on_highlights = function(hl, c)
-          hl.TelescopeBorder = { fg = c.yellow700 }
+          hl.TelescopeBorder = hl.FloatBorder
           hl.TelescopeTitle = { fg = c.base04, bg = c.green }
         end,
       },
