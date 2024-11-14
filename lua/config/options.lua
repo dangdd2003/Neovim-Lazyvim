@@ -18,6 +18,8 @@ vim.opt.wildignore = { "*/node_modules/*,node_modules/*", "*/__pycache__/*,__pyc
 vim.opt.formatoptions:append({ "r" })
 -- vim.opt.guicursor = "n-v-i-c:block-Cursor"
 
+vim.g.ai_cmp = false
+
 vim.g.loaded_python3_provider = 0
 vim.g.loaded_perl_provider = 0
 vim.g.loaded_ruby_provider = 0

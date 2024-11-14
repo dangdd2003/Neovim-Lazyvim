@@ -53,6 +53,9 @@ elseif colorscheme == "catppuccin" then
             FloatBorder = { fg = c.maroon },
             LineNr = { fg = c.mauve },
             TelescopeTitle = { fg = c.base, bg = c.yellow },
+            TelescopePromptBorder = { fg = c.flamingo },
+            TelescoperesultsBorder = { fg = c.pink },
+            TelescopePreviewBorder = { fg = c.sapphire },
           }
         end,
       },

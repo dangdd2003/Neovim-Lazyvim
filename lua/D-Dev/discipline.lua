@@ -9,10 +9,14 @@ function M.cowboy()
     local timer = assert(vim.uv.new_timer())
     local map = key
     vim.keymap.set("n", key, function()
+      local ft = vim.bo.buftype
+      if ft == "nofile" or ft == "help" or ft == "quickfix" or ft == "terminal" then
+        return map
+      end
       if vim.v.count > 0 then
         count = 0
       end
-      if count >= 20 and vim.bo.buftype ~= "nofile" then
+      if count >= 20 then
         ok = pcall(vim.notify, "Hold it, Cowboy!", vim.log.levels.WARN, {
           icon = "🤠",
           title = "Heyyyyy!!!",
