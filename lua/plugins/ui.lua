@@ -116,45 +116,26 @@ return {
 
   -- dashboard - startup UI
   {
-    "nvimdev/dashboard-nvim",
-    event = "VimEnter",
+    "folke/snacks.nvim",
     opts = function(_, opts)
-      -- local logo = [[
-      --   ██████╗       ██████╗ ███████╗██╗   ██╗          Z
-      --   ██╔══██╗      ██╔══██╗██╔════╝██║   ██║      Z
-      --  ████╗ ██║█████╗██║  ██║█████╗  ██║   ██║   z
-      --  ╚██╔╝ ██║╚════╝██║  ██║██╔══╝  ╚██╗ ██╔╝ z
-      --   ██████╔╝      ██████╔╝███████╗ ╚████╔╝
-      --   ╚═════╝       ╚═════╝ ╚══════╝  ╚═══╝
-      -- ]]
-
-      local logo = [[
-       ____      _                                       
-      |  _ \  __| | __ _ _ __   __ ___      __          Z
-      | | | |/ _` |/ _` | '_ \ / _` \ \ /\ / /      Z    
-      | |_| | (_| | (_| | | | | (_| |\ V  V /    z       
-      |____/ \__,_|\__,_|_| |_|\__, | \_/\_/   z         
-                               |___/                     
-      ]]
-
-      logo = string.rep("\n", 8) .. logo .. "\n\n"
-
-      local file_browser = function()
-        local fb_actions = require("telescope").extensions.file_browser
-        fb_actions.file_browser()
-      end
-
-      opts.config.header = vim.split(logo, "\n")
-      table.remove(opts.config.center, 7)
-      table.insert(opts.config.center, 2, {
-        action = file_browser,
-        desc = "  File Browser",
-        icon = "󰥨",
-        key = "b",
-      })
-      for _, button in ipairs(opts.config.center) do
-        button.desc = button.desc .. string.rep(" ", 43 - #button.desc)
-        button.key_format = "  %s"
+      opts.dashboard.preset.header = [[
+______    _                                       
+|  _  \  | |                                     Z
+| | | |__| | __ _ _ __   __ ___      __      Z    
+| | | / _` |/ _` | '_ \ / _` \ \ /\ / /   z       
+| |/ / (_| | (_| | | | | (_| |\ V  V /  z         
+|___/ \__,_|\__,_|_| |_|\__, | \_/\_/             
+                         __/ |                    
+                        |___/                     
+          ]]
+      table.remove(opts.dashboard.preset.keys, 7)
+      if LazyVim.has("telescope-file-browser.nvim") then
+        table.insert(opts.dashboard.preset.keys, 2, {
+          icon = "󰥨 ",
+          key = "b",
+          desc = "File Browser",
+          action = ":Telescope file_browser",
+        })
       end
     end,
   },
