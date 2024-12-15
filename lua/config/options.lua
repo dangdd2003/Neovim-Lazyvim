@@ -19,6 +19,8 @@ vim.opt.formatoptions:append({ "r" })
 -- vim.opt.guicursor = "n-v-i-c:block-Cursor"
 
 vim.g.ai_cmp = false
+vim.g.snacks_animate = false
+vim.g.lazyvim_picker = "telescope"
 
 vim.g.loaded_python3_provider = 0
 vim.g.loaded_perl_provider = 0

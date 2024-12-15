@@ -83,32 +83,26 @@ return {
         },
         opts = { skip = true },
       })
-      opts.presets.lsp_doc_border = true
       opts.presets.bottom_search = false
     end,
   },
 
-  -- notification
+  -- Most global UI config
   {
     "folke/snacks.nvim",
     opts = {
+      animate = {
+        fps = 144,
+      },
       notifier = {
         style = "fancy",
       },
-    },
-  },
-
-  -- indentation guide
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    opts = {
-      scope = {
-        include = {
-          node_type = {
-            lua = {
-              "table_constructor",
-            },
-          },
+      scroll = {
+        enabled = false,
+      },
+      dim = {
+        animate = {
+          enabled = false,
         },
       },
     },
@@ -155,14 +149,14 @@ ______    _
   },
 
   -- lsp floating border
-  {
-    "neovim/nvim-lspconfig",
-    opts = function()
-      vim.diagnostic.config({
-        float = { border = "rounded" },
-      })
-    end,
-  },
+  -- {
+  --   "neovim/nvim-lspconfig",
+  --   opts = function()
+  --     vim.diagnostic.config({
+  --       float = { border = "rounded" },
+  --     })
+  --   end,
+  -- },
 
   -- mason
   {

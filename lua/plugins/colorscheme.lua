@@ -110,9 +110,12 @@ elseif colorscheme == "everforest" then
           transparent_background_level = 0, -- { 0, 1, 2 }
           italics = true,
           inlay_hints_background = "dimmed",
-          on_highlights = function(hl)
-            hl.NormalFloat = { bg = "none" }
-            hl.FloatBorder = { bg = "none" }
+          on_highlights = function(hl, pl)
+            hl.FloatBorder = { bg = pl.none }
+            hl.TelescopeTitle = { fg = pl.bg0, bg = pl.yellow }
+            hl.TelescopePromptBorder = { fg = pl.red }
+            hl.TelescoperesultsBorder = { fg = pl.blue }
+            hl.TelescopePreviewBorder = { fg = pl.purple }
           end,
         })
       end,
